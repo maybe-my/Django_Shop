@@ -1,0 +1,81 @@
+{% extends 'include/base.html' %}
+{% load static %}
+{% block title %}Интернет магазин одежы{% endblock title %}
+{% block content %}
+
+<!-- ****** Checkout Area Start ****** -->
+<div class="checkout_area section_padding_100">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 col-md-6">
+                <div class="checkout_details_area mt-50 clearfix">
+
+                    <div class="cart-page-heading">
+                        <h5>Оформление заказа</h5>
+                        <p>Введите код купона</p>
+                    </div>
+
+                    <form action="#" method="post">
+                        {% csrf_token %}
+                        {{form}}
+                        </br>
+                        <button type="submit" class="btn karl-checkout-btn">Подтвердить заказ</button>
+                    </form>
+                    
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
+                <div class="order-details-confirmation">
+
+                    <div class="cart-page-heading">
+                        <h5>Ваш заказ</h5>
+                        <p>Детали заказа</p>
+                    </div>
+
+                    <ul class="order-details-form mb-4">
+                        <li><span>ТОВАР</span> <span>Всего</span></li>
+                        <li><span>{{ tovar.name }}</span> <span>{{ tovar.price }} грн</span></li>
+                        <li><span>Доставка</span> <span>Нова почта</span></li>
+                        <li><span>ВСЕГО:</span> <span>{{ tovar.price }} грн</span></li>
+                    </ul>
+
+
+                    <div id="accordion" role="tablist" class="mb-4">
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne">
+                                <h6 class="mb-0">
+                                    <a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><i class="fa fa-circle-o mr-3"></i>Оплатить онлайн (ПриватБанк)</a>
+                                </h6>
+                            </div>
+
+                            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p>Оплатить онлайн через ПриватБанк</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingFour">
+                                <h6 class="mb-0">
+                                    <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour"><i class="fa fa-circle-o mr-3"></i>Оплатить при доставке</a>
+                                </h6>
+                            </div>
+                            <div id="collapseFour" class="collapse show" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p>Нова почта (наложенный платеж), оплата прийсходит после получение товара</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- <a href="#" class="btn karl-checkout-btn">Подтвердить заказ</a> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- ****** Checkout Area End ****** -->
+{% endblock content %}

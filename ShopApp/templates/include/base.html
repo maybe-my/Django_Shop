@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{% static 'css/core-style.css' %}">
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
+    
     <!-- Responsive CSS -->
     <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
 
@@ -108,7 +109,7 @@
                                     <a href="#"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
                                 </div>
                                 <!-- Cart & Menu Area -->
-                                <div class="header-cart-menu d-flex align-items-center ml-auto">
+                                {% comment %} <div class="header-cart-menu d-flex align-items-center ml-auto">
                                     <!-- Cart Area -->
                                     <div class="cart">
                                         <a href="#" id="header-cart-btn" target="_blank"><span class="cart_quantity">2</span> <i class="ti-bag"></i> Корзина 20 грн </a>
@@ -140,7 +141,7 @@
                                     <div class="header-right-side-menu ml-15">
                                         <a href="#" id="sideMenuBtn"><i class="ti-menu" aria-hidden="true"></i></a>
                                     </div>
-                                </div>
+                                </div> {% endcomment %}
                             </div>
                         </div>
 
@@ -168,7 +169,7 @@
 
                                     <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                         <ul class="navbar-nav animated" id="nav">
-                                            <li class="nav-item active"><a class="nav-link" href="index.html">Главная</a></li>
+                                            <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Главная</a></li>
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Страницы</a>
                                                 <div class="dropdown-menu" aria-labelledby="karlDropdown">
@@ -196,7 +197,28 @@
             </div>
         </header>
         <!-- ****** Header Area End ****** -->
+        <!-- ****** Top Discount Area Start ****** -->
+<section class="top-discount-area d-md-flex align-items-center">
+    <!-- Single Discount Area -->
+    <div class="single-discount-area">
+        <h5>Бесплатная доставка &amp; Возврат</h5>
+        <h6><a href="#">КУПИТЬ СЕЙЧАС</a></h6>
+    </div>
+    <!-- Single Discount Area -->
+    <div class="single-discount-area">
+        <h5>20% Скидка на все платья</h5>
+        <h6>ИСПОЛЬЗУЙТЕ КОД: SUMMER</h6>
+    </div>
+    <!-- Single Discount Area -->
+    <div class="single-discount-area">
+        <h5>20% Скидка для студентов</h5>
+        <h6>ИСПОЛЬЗУЙТЕ КОД: STUDENT</h6>
+    </div>
+</section>
+<!-- ****** Top Discount Area End ****** -->
+
         <!-- ****** Block Content Start ****** -->
+
         {% block content %}
         
         {% endblock content %}

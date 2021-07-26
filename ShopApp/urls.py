@@ -23,4 +23,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.index, name='index'),
     path('tovar/<str:slug>', views.tovar_show, name='tovar_show'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('checkout/<str:slug>', views.checkout, name='checkout'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

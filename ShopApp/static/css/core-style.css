@@ -1132,19 +1132,19 @@ img {
 }
 
 .product-img .product-quicview > a {
-    width: 72px;
-    height: 72px;
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
+    /* width: 72px; */
+    /* height: 72px; */
+    /* border: 2px solid rgba(255, 255, 255, 0.8); */
+    /* border-radius: 50%; */
     text-align: center;
-    color: rgba(255, 255, 255, 0.8);
+    /* color: rgba(255, 255, 255, 0.8); */
     font-size: 36px;
     line-height: 72px;
 }
 
 .product-img .product-quicview > a:hover {
-    border: 2px solid rgba(255, 255, 255, 1);
-    color: rgba(255, 255, 255, 1);
+    /* border: 2px solid rgba(255, 255, 255, 1); */
+    /* color: rgba(255, 255, 255, 1); */
 }
 
 .product-description {
