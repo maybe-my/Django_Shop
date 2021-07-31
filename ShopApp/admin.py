@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Order, OrderItem, Category, Tovar
+from .models import Order, OrderItem, Category, Tovar, Slaider
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -29,3 +29,12 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [OrderItemInline]
 
 admin.site.register(Order, OrderAdmin)
+
+
+class SlaidbarAdmin(admin.ModelAdmin):
+    model = Slaider
+    list_display = ['id', 'title', 'button_title', 'button_url']
+    list_editable = ['title', 'button_title', 'button_url']
+    list_filter = ['id', 'created', 'updated']
+
+admin.site.register(Slaider, SlaidbarAdmin)

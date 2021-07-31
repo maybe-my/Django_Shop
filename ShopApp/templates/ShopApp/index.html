@@ -5,55 +5,27 @@
 
 <!-- ****** Welcome Slides Area Start ****** -->
 <section class="welcome_area">
-    <div class="welcome_slides owl-carousel">
+    <div class="welcome_slides owl-carousel">        
         <!-- Single Slide Start -->
-        <div class="single_slide height-800 bg-img background-overlay" style="background-image: url({% static 'img/bg-img/bg-1.jpg' %});">
+        {% for slaid in slaidbar %}
+        <div class="single_slide height-800 bg-img background-overlay" style="background-image: url({{ slaid.background.url }});">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="welcome_slide_text">
-                            <h6 data-animation="bounceInDown" data-delay="0" data-duration="500ms">* Только сегодня мы предлагаем бесплатную доставку</h6>
-                            <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms">Модные тенденции</h2>
-                            <a href="#" class="btn karl-btn" data-animation="fadeInUp" data-delay="1s" data-duration="500ms">Купить Cейчас</a>
+                            <h6 data-animation="fadeInDown" data-delay="0" data-duration="500ms">* {{ slaid.sub_title }}</h6>
+                            <h2 data-animation="bounceInDown" data-delay="500ms" data-duration="500ms">{{ slaid.title }}</h2>
+                            <a href="{{ slaid.button_url }}" class="btn karl-btn" data-animation="fadeInRightBig" data-delay="1s" data-duration="500ms">{{ slaid.button_title }}</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Single Slide Start -->
-        <div class="single_slide height-800 bg-img background-overlay" style="background-image: url({% static 'img/bg-img/bg-4.jpg' %});">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-12">
-                        <div class="welcome_slide_text">
-                            <h6 data-animation="fadeInDown" data-delay="0" data-duration="500ms">* Только сегодня мы предлагаем бесплатную доставку</h6>
-                            <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms">Летняя коллекция</h2>
-                            <a href="#" class="btn karl-btn" data-animation="fadeInLeftBig" data-delay="1s" data-duration="500ms">Проверить коллекцию</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Single Slide Start -->
-        <div class="single_slide height-800 bg-img background-overlay" style="background-image: url({% static 'img/bg-img/bg-2.jpg' %});">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-12">
-                        <div class="welcome_slide_text">
-                            <h6 data-animation="fadeInDown" data-delay="0" data-duration="500ms">* Только сегодня мы предлагаем бесплатную доставку</h6>
-                            <h2 data-animation="bounceInDown" data-delay="500ms" data-duration="500ms">Женская Мода</h2>
-                            <a href="#" class="btn karl-btn" data-animation="fadeInRightBig" data-delay="1s" data-duration="500ms">Проверить коллекцию</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </section>
 <!-- ****** Welcome Slides Area End ****** -->
-
+{% comment %} 
 <!-- ****** Top Catagory Area Start ****** -->
 <section class="top_catagory_area d-md-flex clearfix">
     <!-- Single Catagory -->
@@ -72,7 +44,7 @@
             <a href="#" class="btn karl-btn">SHOP NOW</a>
         </div>
     </div>
-</section>
+</section> {% endcomment %}
 <!-- ****** Top Catagory Area End ****** -->
 
 <!-- ****** New Arrivals Area Start ****** -->
@@ -89,10 +61,12 @@
 
     <div class="karl-projects-menu mb-100">
         <div class="text-center portfolio-menu">
-            <button class="btn active" data-filter="*">ALL</button>
-            <button class="btn" data-filter=".women">WOMAN</button>
-            <button class="btn" data-filter=".man">MAN</button>
-            <button class="btn" data-filter=".kids">KIDS</button>
+            <button class="btn active" data-filter="*">Все</button>
+            {% for category in categorys %}
+                {% if category != 'Без категории' %}
+                    <button class="btn" data-filter=".{{category.name}}">{{category.name}}</button>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 
@@ -100,13 +74,12 @@
         <div class="row karl-new-arrivals">
         <!-- Single gallery Item Start -->
             {% for tovar in tovars %}
-                <div class="col-12 col-sm-6 col-md-4 single_gallery_item women wow fadeInUpBig" data-wow-delay="0.2s">
+                <div class="col-12 col-sm-6 col-md-4 single_gallery_item {{tovar.category}} wow fadeInUpBig" data-wow-delay="0.2s">
                     <!-- Product Image -->
                     <div class="product-img">
+                        <a href="{% url 'tovar_show' tovar.slug %}">
                         <img src="{{ tovar.image_main.url }}" alt="">
-                        <div class="product-quicview">
-                            <a href="{% url 'tovar_show' tovar.slug %}" data-target="#quickview"><i class="ti-new-window"></i></a>
-                        </div>
+                        <a>
                     </div>
                     <!-- Product Description -->
                     <div class="product-description">

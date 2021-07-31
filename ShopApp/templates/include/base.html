@@ -98,16 +98,16 @@
         <!-- ****** Header Area Start ****** -->
         <header class="header_area">
             <!-- Top Header Area Start -->
-            <div class="top_header_area">
+            {% comment %} <div class="top_header_area">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center justify-content-end">
 
                         <div class="col-12 col-lg-7">
                             <div class="top_single_area d-flex align-items-center">
                                 <!-- Logo Area -->
-                                <div class="top_logo">
+                                {% comment %} <div class="top_logo">
                                     <a href="#"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
-                                </div>
+                                </div> 
                                 <!-- Cart & Menu Area -->
                                 {% comment %} <div class="header-cart-menu d-flex align-items-center ml-auto">
                                     <!-- Cart Area -->
@@ -141,13 +141,13 @@
                                     <div class="header-right-side-menu ml-15">
                                         <a href="#" id="sideMenuBtn"><i class="ti-menu" aria-hidden="true"></i></a>
                                     </div>
-                                </div> {% endcomment %}
+                                </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
-            </div>
+            </div> {% endcomment %}
 
             <!-- Top Header Area End -->
             <div class="main_header_area">
@@ -156,10 +156,13 @@
                         <div class="col-12 d-md-flex justify-content-between">
                             <!-- Header Social Area -->
                             <div class="header-social-area">
-                                <a href="#"><span class="karl-level">Поделится</span> <i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            {% comment %} <span class="karl-level">Поделится</span> {% endcomment %}
+                                {% comment %} <li class="nav-item"><a class="nav-link" href="#">SHOPME</a></li> {% endcomment %}
+                                {% comment %} <a target="blank" href="https://www.instagram.com/shopme_girls/"><i class="fa fa-instagram" aria-hidden="true"></i></a> {% endcomment %}
+                                {% comment %} <img src="{% static 'img/core-img/п.png' %}" alt=""> {% endcomment %}
+                                {% comment %} <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a> {% endcomment %}
                             </div>
                             <!-- Menu Area -->
                             <div class="main-menu-area">
@@ -170,26 +173,26 @@
                                     <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                         <ul class="navbar-nav animated" id="nav">
                                             <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Главная</a></li>
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Страницы</a>
+                                            {% comment %} <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="{% url 'tovars' %}" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Каталог</a>
                                                 <div class="dropdown-menu" aria-labelledby="karlDropdown">
-                                                    <a class="dropdown-item" href="index.html">Главная</a>
-                                                    <a class="dropdown-item" href="shop.html">Каталог</a>
+                                                    
                                                     <a class="dropdown-item" href="product-details.html">Product Details</a>
                                                     <a class="dropdown-item" href="cart.html">Cart</a>
                                                     <a class="dropdown-item" href="checkout.html">Checkout</a>
                                                 </div>
-                                            </li>
-                                            <li class="nav-item"><a class="nav-link" href="#">Dresses</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#"><span class="karl-level">hot</span> Shoes</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                                            </li> {% endcomment %}
+                                            <li class="nav-item"><a class="nav-link" href="{% url 'tovars' %}">Каталог</a></li>
+                                            {% comment %} <li class="nav-item"><a class="nav-link" href="#"><span class="karl-level">hot</span> Shoes</a></li> {% endcomment %}
+                                            <li class="nav-item"><a class="nav-link" href="#">Контакты</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">Акции</a></li>
                                         </ul>
                                     </div>
                                 </nav>
                             </div>
                             <!-- Help Line -->
                             <div class="help-line">
-                                <a href="tel:+346573556778"><i class="ti-headphone-alt"></i> +38 (093) 23 670 47</a>
+                                {% comment %} <a href="tel:+346573556778"><i class="ti-headphone-alt"></i> +38 (093) 23 670 47</a> {% endcomment %}
                             </div>
                         </div>
                     </div>
@@ -198,7 +201,7 @@
         </header>
         <!-- ****** Header Area End ****** -->
         <!-- ****** Top Discount Area Start ****** -->
-<section class="top-discount-area d-md-flex align-items-center">
+{% comment %} <section class="top-discount-area d-md-flex align-items-center">
     <!-- Single Discount Area -->
     <div class="single-discount-area">
         <h5>Бесплатная доставка &amp; Возврат</h5>
@@ -214,7 +217,7 @@
         <h5>20% Скидка для студентов</h5>
         <h6>ИСПОЛЬЗУЙТЕ КОД: STUDENT</h6>
     </div>
-</section>
+</section> {% endcomment %}
 <!-- ****** Top Discount Area End ****** -->
 
         <!-- ****** Block Content Start ****** -->
@@ -245,16 +248,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Вс�
                     <div class="col-12 col-sm-6 col-md-3 col-lg-2">
                         <div class="single_footer_area">
                             <ul class="footer_widget_menu">
-                                <li><a href="#">О компании</a></li>
-                                <li><a href="#">Блог</a></li>
+                                <li><a target="blank" href="https://instagram.com/shopme_girls">Мы в instagram</a></li>
+                                {% comment %} <li><a href="#">Блог</a></li> {% endcomment %}
                                 <li><a href="#">Часто задаваемые вопросы</a></li>
-                                <li><a href="#">Возврат</a></li>
+                                <li><a href="#">Доставка & Возврат</a></li>
                                 <li><a href="#">Связаться</a></li>
                             </ul>
                         </div>
                     </div>
                     <!-- Single Footer Area Start -->
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                    {% comment %} <div class="col-12 col-sm-6 col-md-3 col-lg-2">
                         <div class="single_footer_area">
                             <ul class="footer_widget_menu">
                                 <li><a href="#">Мой аккаунт</a></li>
@@ -263,7 +266,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Вс�
                                 <li><a href="#">Филиалы</a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div> {% endcomment %}
                     <!-- Single Footer Area Start -->
                     <div class="col-12 col-lg-5">
                         <div class="single_footer_area">

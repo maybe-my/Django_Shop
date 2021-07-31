@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+# Товары
 class Category(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
@@ -77,6 +77,7 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
+
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE, verbose_name='Товар')
     product = models.ForeignKey(Tovar, related_name='Товар', on_delete=models.CASCADE, verbose_name='Товар', db_tablespace=1)
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена товара')
@@ -87,3 +88,16 @@ class OrderItem(models.Model):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
+
+
+class Slaider(models.Model):
+    background = models.ImageField(upload_to='media/slaidbar/%Y/%m/%d', blank=False)
+    title = models.CharField(max_length=20)
+    sub_title = models.CharField(max_length=40)
+    button_title = models.CharField(max_length=15)
+    button_url =  models.URLField()
+    active = models.BooleanField(default=True)
+
+    # Date
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
