@@ -1,0 +1,247 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title> ShopMe | {% block title %}{% endblock title %}</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+
+    <!-- Core Style CSS --> 
+    <link rel="stylesheet" href="{% static 'css/core-style.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    
+    <!-- Responsive CSS -->
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+
+</head>
+<body>
+    
+
+    <div id="wrapper">
+
+        <!-- ****** Header Area Start ****** -->
+        <header class="header_area">
+            <!-- Top Header Area Start -->
+            {% comment %} <div class="top_header_area">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center justify-content-end">
+
+                        <div class="col-12 col-lg-7">
+                            <div class="top_single_area d-flex align-items-center">
+                                <!-- Logo Area -->
+                                {% comment %} <div class="top_logo">
+                                    <a href="#"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+                                </div> 
+                                <!-- Cart & Menu Area -->
+                                {% comment %} <div class="header-cart-menu d-flex align-items-center ml-auto">
+                                    <!-- Cart Area -->
+                                    <div class="cart">
+                                        <a href="#" id="header-cart-btn" target="_blank"><span class="cart_quantity">2</span> <i class="ti-bag"></i> Корзина 20 грн </a>
+                                        <!-- Cart List Area Start -->
+                                        <ul class="cart-list">
+                                            <li>
+                                                <a href="#" class="image"><img src="{% static 'img/product-img/product-10.jpg' %}" class="cart-thumb" alt=""></a>
+                                                <div class="cart-item-desc">
+                                                    <h6><a href="#">Women's Fashion</a></h6>
+                                                    <p>1x - <span class="price">$10</span></p>
+                                                </div>
+                                                <span class="dropdown-product-remove"><i class="icon-cross"></i></span>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="image"><img src="{% static 'img/product-img/product-11.jpg' %}" class="cart-thumb" alt=""></a>
+                                                <div class="cart-item-desc">
+                                                    <h6><a href="#">Women's Fashion</a></h6>
+                                                    <p>1x - <span class="price">$10</span></p>
+                                                </div>
+                                                <span class="dropdown-product-remove"><i class="icon-cross"></i></span>
+                                            </li>
+                                            <li class="total">
+                                                <span class="pull-right">СУММА: 20 грн</span>
+                                                <a href="cart.html" class="btn btn-sm btn-cart">Корзина</a>
+                                                <a href="checkout-1.html" class="btn btn-sm btn-checkout">Оформить заказ</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="header-right-side-menu ml-15">
+                                        <a href="#" id="sideMenuBtn"><i class="ti-menu" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div> {% endcomment %}
+
+            <!-- Top Header Area End -->
+            <div class="main_header_area">
+                <div class="container h-100">
+                    <div class="row h-100">
+                        <div class="col-12 d-md-flex justify-content-between">
+                            <!-- Header Social Area -->
+                            <div class="header-social-area">
+                            {% comment %} <span class="karl-level">Поделится</span> {% endcomment %}
+                                {% comment %} <li class="nav-item"><a class="nav-link" href="#">SHOPME</a></li> {% endcomment %}
+                                {% comment %} <a target="blank" href="https://www.instagram.com/shopme_girls/"><i class="fa fa-instagram" aria-hidden="true"></i></a> {% endcomment %}
+                                {% comment %} <img src="{% static 'img/core-img/п.png' %}" alt=""> {% endcomment %}
+                                {% comment %} <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a> {% endcomment %}
+                            </div>
+                            <!-- Menu Area -->
+                            <div class="main-menu-area">
+                                <nav class="navbar navbar-expand-lg align-items-start">
+
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="ti-menu"></i></span></button>
+
+                                    <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
+                                        <ul class="navbar-nav animated" id="nav">
+                                            <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Главная</a></li>
+                                            {% comment %} <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="{% url 'tovars' %}" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Каталог</a>
+                                                <div class="dropdown-menu" aria-labelledby="karlDropdown">
+                                                    
+                                                    <a class="dropdown-item" href="product-details.html">Product Details</a>
+                                                    <a class="dropdown-item" href="cart.html">Cart</a>
+                                                    <a class="dropdown-item" href="checkout.html">Checkout</a>
+                                                </div>
+                                            </li> {% endcomment %}
+                                            <li class="nav-item"><a class="nav-link" href="{% url 'tovars' %}">Каталог</a></li>
+                                            {% comment %} <li class="nav-item"><a class="nav-link" href="#"><span class="karl-level">hot</span> Shoes</a></li> {% endcomment %}
+                                            {% comment %} <li class="nav-item"><a class="nav-link" href="#">Контакты</a></li> {% endcomment %}
+                                            <li class="nav-item"><a class="nav-link" href="{% url 'express' %}">Доставка & Оплата</a></li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                            <!-- Help Line -->
+                            <div class="help-line">
+                                {% comment %} <a href="tel:+346573556778"><i class="ti-headphone-alt"></i> +38 (093) 23 670 47</a> {% endcomment %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ****** Header Area End ****** -->
+        <!-- ****** Top Discount Area Start ****** -->
+{% comment %} <section class="top-discount-area d-md-flex align-items-center">
+    <!-- Single Discount Area -->
+    <div class="single-discount-area">
+        <h5>Бесплатная доставка &amp; Возврат</h5>
+        <h6><a href="#">КУПИТЬ СЕЙЧАС</a></h6>
+    </div>
+    <!-- Single Discount Area -->
+    <div class="single-discount-area">
+        <h5>20% Скидка на все платья</h5>
+        <h6>ИСПОЛЬЗУЙТЕ КОД: SUMMER</h6>
+    </div>
+    <!-- Single Discount Area -->
+    <div class="single-discount-area">
+        <h5>20% Скидка для студентов</h5>
+        <h6>ИСПОЛЬЗУЙТЕ КОД: STUDENT</h6>
+    </div>
+</section> {% endcomment %}
+<!-- ****** Top Discount Area End ****** -->
+
+        <!-- ****** Block Content Start ****** -->
+
+        {% block content %}
+        
+        {% endblock content %}
+
+        <!-- ****** Block Content End ****** -->
+        <!-- ****** Footer Area Start ****** -->
+        <footer class="footer_area">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Footer Area Start -->
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="single_footer_area">
+                            {% comment %} <div class="footer-logo">
+                                <img style="border-radius: 50%; heigh: 150px" src="{% static 'img/core-img/Fotoram.io.png' %}" alt="">
+                            </div> {% endcomment %}
+                            <div class="copywrite_text d-flex align-items-center">
+                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+{% comment %} Copyright &copy;<script>document.write(new Date().getFullYear());</script> Все права защищены | SHOPME</a> {% endcomment %}
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Area Start -->
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                        <div class="single_footer_area">
+                            <ul class="footer_widget_menu">
+                                <li><a target="blank" href="https://instagram.com/shopme_girls">Мы в instagram</a></li>
+                                {% comment %} <li><a href="#">Блог</a></li> {% endcomment %}
+                                <li><a href="#">Часто задаваемые вопросы</a></li>
+                                <li><a href="{% url 'express' %}">Доставка & Возврат</a></li>
+                                {% comment %} <li><a href="#">Связаться</a></li> {% endcomment %}
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Footer Area Start -->
+                    {% comment %} <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                        <div class="single_footer_area">
+                            <ul class="footer_widget_menu">
+                                <li><a href="#">Мой аккаунт</a></li>
+                                <li><a href="#">Перевозки</a></li>
+                                <li><a href="#">Наша Политика</a></li>
+                                <li><a href="#">Филиалы</a></li>
+                            </ul>
+                        </div>
+                    </div> {% endcomment %}
+                    <!-- Single Footer Area Start -->
+                    <div class="col-12 col-lg-5">
+                        <div class="single_footer_area">
+                            <div class="footer_heading mb-30">
+                                <h6>Подписывайтесь на нашу новостную рассылку</h6>
+                            </div>
+                            <div class="subscribtion_form">
+                                <form action="#" method="post">
+                                    <input type="email" name="mail" class="mail" placeholder="Ваш email адрес">
+                                    <button type="submit" class="submit">Подписаться</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="line"></div>
+
+                <!-- Footer Bottom Area Start -->
+                <div class="footer_bottom_area">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="footer_social_area text-center">
+                               Copyright &copy;<script>document.write(new Date().getFullYear());</script> Все права защищены | SHOPME</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- ****** Footer Area End ****** -->
+    </div>
+    <!-- /.wrapper end -->
+
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Plugins js -->
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <!-- Active js -->
+    <script src="{% static 'js/active.js' %}"></script>
+</body>
+</html>

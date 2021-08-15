@@ -1,0 +1,5 @@
+<span class="badges">
+    <span class="new">Новинка</span>
+    <span class="sale">скидка  </span>
+    <span class="new">Разпродажа</span>
+</span>

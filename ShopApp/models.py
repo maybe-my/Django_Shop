@@ -1,6 +1,7 @@
 from django.db import models
 
-# Товары
+
+# Категории
 class Category(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
@@ -12,11 +13,28 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-        
 
+
+# Под категории
+class Sub_Category(models.Model):
+    parent_category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='Родитель')  
+    name = models.CharField(max_length=200, db_index=True)
+    slug = models.SlugField(max_length=200, db_index=True, unique=True)
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Под категория'
+        verbose_name_plural = 'Под категории'
+
+    def __str__(self):
+        return self.name      
+
+
+# Товары
 class Tovar(models.Model):
+    new = models.BooleanField(default=True)
     top = models.BooleanField(default=False, help_text='Показать на главной странице', verbose_name='Топ товар')
-    category = models.ForeignKey(Category, related_name='Товар', on_delete=models.CASCADE, default='Без категории')
+    category = models.ForeignKey(Sub_Category, related_name='Товар', on_delete=models.PROTECT)
     name = models.CharField(max_length=40, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True)
     description = models.TextField(blank=True)
@@ -56,16 +74,20 @@ class Tovar(models.Model):
         return self.name
 
 
+# заказы
 class Order(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
+    phone = models.CharField(max_length=13)
     address = models.CharField(max_length=250)
-    postal_code = models.CharField(max_length=20)
     city = models.CharField(max_length=100)
+    comment = models.CharField(max_length=300)
+    paid = models.BooleanField(default=False)
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    paid = models.BooleanField(default=False)
+    
 
     class Meta:
         ordering = ('-created',)
@@ -76,6 +98,7 @@ class Order(models.Model):
         return 'Заказ №{}'.format(self.id)
 
 
+# Заказы
 class OrderItem(models.Model):
 
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE, verbose_name='Товар')
@@ -90,6 +113,7 @@ class OrderItem(models.Model):
         verbose_name_plural = 'Товары'
 
 
+# Слайдер
 class Slaider(models.Model):
     background = models.ImageField(upload_to='media/slaidbar/%Y/%m/%d', blank=False)
     title = models.CharField(max_length=20)
