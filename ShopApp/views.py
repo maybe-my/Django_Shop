@@ -10,17 +10,24 @@ def index(request):
     tovar_top = Tovar.objects.filter(available=True, top=True)
     tovars_all = Tovar.objects.filter(available=True).order_by('-created')[:8]
     tovars_new = Tovar.objects.filter(available=True, new=True).order_by('-created')[:8]
-    tovars_women = Tovar.objects.filter(available=True, category__parent_category__name="Женщинам").order_by('-created')[:8]
+    tovars_women = Tovar.objects.filter(available=True, family='w').order_by('-created')[:8]
+    tovars_man = Tovar.objects.filter(available=True, family='m').order_by('-created')[:8]
+    tovars_kids = Tovar.objects.filter(available=True, family='k').order_by('-created')[:8]
+    print(tovars_women)
     categorys = Category.objects.all().order_by('id')[:5]
     slaidbar = Slaider.objects.filter(active=True).order_by('-created')[:3]
     return render(request,
                   'ShopApp/index.html',
-                  {'tovars_all': tovars_all,
-                  'categorys': categorys,
-                  'slaidbar': slaidbar,
-                  'tovars_new': tovars_new,
-                  'tovar_top': tovar_top,
-                  })
+                    {
+                    'categorys': categorys,
+                    'slaidbar': slaidbar,
+                    'tovars_all': tovars_all,
+                    'tovars_new': tovars_new,
+                    'tovar_top': tovar_top,
+                    'tovars_women': tovars_women,
+                    'tovars_man': tovars_man,
+                    'tovars_kids': tovars_kids,
+                    })
 
 
 def tovars(request):

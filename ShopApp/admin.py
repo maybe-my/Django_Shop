@@ -1,18 +1,11 @@
 from django.contrib import admin
-from .models import Order, OrderItem, Category, Tovar, Slaider, Sub_Category
+from .models import Order, OrderItem, Category, Tovar, Slaider
 
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
     prepopulated_fields = {'slug': ('name',)}
 admin.site.register(Category, CategoryAdmin)
-
-
-class Sub_CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'parent_category', 'slug']
-    prepopulated_fields = {'slug': ('name',)}
-    list_editable = ['parent_category']
-admin.site.register(Sub_Category, Sub_CategoryAdmin)
 
 
 class ProductAdmin(admin.ModelAdmin):

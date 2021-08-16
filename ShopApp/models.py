@@ -15,26 +15,18 @@ class Category(models.Model):
         return self.name
 
 
-# Под категории
-class Sub_Category(models.Model):
-    parent_category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='Родитель')  
-    name = models.CharField(max_length=200, db_index=True)
-    slug = models.SlugField(max_length=200, db_index=True, unique=True)
-
-    class Meta:
-        ordering = ('name',)
-        verbose_name = 'Под категория'
-        verbose_name_plural = 'Под категории'
-
-    def __str__(self):
-        return self.name      
-
-
 # Товары
 class Tovar(models.Model):
-    new = models.BooleanField(default=True)
+    new = models.BooleanField(default=True, help_text='Показать на главной странице что товар новый', verbose_name='Новый товар')
     top = models.BooleanField(default=False, help_text='Показать на главной странице', verbose_name='Топ товар')
-    category = models.ForeignKey(Sub_Category, related_name='Товар', on_delete=models.PROTECT)
+    familys = (
+        ('m', 'Мужчинам'),
+        ('w', 'Женщинам'),
+        ('k', 'Детям'),
+        ('o', 'Выберите пол')
+    )
+    family = models.CharField(max_length=10, choices=familys, default='o')
+    category = models.ForeignKey(Category, related_name='Товар',  default='Без категории', on_delete=models.SET_DEFAULT)
     name = models.CharField(max_length=40, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True)
     description = models.TextField(blank=True)
