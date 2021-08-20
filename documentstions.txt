@@ -3,3 +3,14 @@
     <span class="sale">скидка  </span>
     <span class="new">Разпродажа</span>
 </span>
+
+
+# Пути
+name='admin'),                          # Админка 
+name='shop_index')                      # Shop главная
+    name='index'                        # главная страница
+    name='tovar_show'                   # вывод товара
+    name='checkout'),                   # оформление заказа
+    name='tovars'),                     # Все товары
+    name='tovars_category')             # Показ товаров по категории
+    name='express')                     # Доставка и оплата

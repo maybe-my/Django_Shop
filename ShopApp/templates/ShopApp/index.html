@@ -18,7 +18,7 @@
                                 <div class="hero-slide-content slider-animated-1">
                                     <span class="category">{{ slaid.sub_title }}</span>
                                     <h2 class="title-1">{{slaid.title}} </h2>
-                                    <h2 class="title-2"><span>50%</span> Off</h2>
+                                    {% comment %} <h2 class="title-2"><span>50%</span> Off</h2> {% endcomment %}
                                     <a href="{{ slaid.button_url }}" class="btn btn-lg btn-primary btn-hover-dark"> {{slaid.button_title}} <i
                                             class="fa fa-shopping-basket ml-15px" aria-hidden="true"></i></a>
                                 </div>
@@ -27,7 +27,7 @@
                                 class="col-xl-7 col-lg-7 col-md-7 col-sm-7 d-flex justify-content-center position-relative">
                                 <div class="show-case">
                                     <div class="hero-slide-image">
-                                        <img src="{% static 'images/slider-image/slider-1.png' %}" alt="" />
+                                        <img style="height: 634px; width: 472px;" src="{{ slaid.tovar.image_main.url }}" alt="" />
                                         {% comment %} {{ slaid.tovar.image_main.url }} {% endcomment %}
                                     </div>
                                     <div class="display-wrapper">
@@ -37,7 +37,7 @@
                                             <a href="{% url 'tovar_show' slaid.tovar.slug %}" class="shop-link">Купить сейчас</a>
                                         </div>
                                         <div class="image-side">
-                                            <img src="assets/images/slider-image/display-image.png" alt="">
+                                            {% comment %} <img style="height: 97px; width: 89px;" src="{{ slaid.tovar.image_main.url }}" alt=""> {% endcomment %}
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
         <div class="row">
             <div class="single-col">
                 <a href="shop-left-sidebar.html" class="single-banner">
-                    <img src="assets/images/banner/1.jpg" alt="">
+                    <img src="{% static "images/banner/1.jpg" alt="">
                     <div class="item-disc">
                         <span class="item-title">Women</span>
                         <span class="item-amount">16 items</span>
@@ -76,7 +76,7 @@
             </div>
             <div class="single-col center-col">
                 <div class="single-banner">
-                    <img src="assets/images/banner/2.jpg" alt="">
+                    <img src="{% static "images/banner/2.jpg" alt="">
                     <div class="item-disc">
                         <h2 class="title">#bestsellers</h2>
                         <a href="shop-left-sidebar.html" class="shop-link">Shop Now</a>
@@ -85,7 +85,7 @@
             </div>
             <div class="single-col">
                 <a href="shop-left-sidebar.html" class="single-banner">
-                    <img src="assets/images/banner/3.jpg" alt="">
+                    <img src="{% static "images/banner/3.jpg" alt="">
                     <div class="item-disc">
                         <span class="item-title">Nomen</span>
                         <span class="item-amount">16 items</span>
@@ -105,11 +105,11 @@
                 <!-- single item -->
                 <div class="single-feature">
                     <div class="feature-icon">
-                        <img src="assets/images/icons/1.png" alt="">
+                        <img src="{% static "images/icons/1.png" %}" alt="">
                     </div>
                     <div class="feature-content">
-                        <h4 class="title">Free Shipping</h4>
-                        <span class="sub-title">Capped at $39 per order</span>
+                        <h4 class="title">Бесплатная доставка</h4>
+                        <span class="sub-title">Купи все сделаем доставку Бесплатной</span>
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
             <div class="col-lg-4 col-md-6 mb-md-30px mb-lm-30px mt-lm-30px">
                 <div class="single-feature">
                     <div class="feature-icon">
-                        <img src="assets/images/icons/2.png" alt="">
+                        <img src="{% static "images/icons/2.png" %}" alt="">
                     </div>
                     <div class="feature-content">
                         <h4 class="title">Card Payments</h4>
@@ -129,7 +129,7 @@
             <div class="col-lg-4 col-md-6 ">
                 <div class="single-feature">
                     <div class="feature-icon">
-                        <img src="assets/images/icons/3.png" alt="">
+                        <img src="{% static "images/icons/3.png" %}" alt="">
                     </div>
                     <div class="feature-content">
                         <h4 class="title">Easy Returns</h4>
@@ -186,8 +186,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/1.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/2.jpg"
+                                            <img src="{% static "images/product-image/1.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/2.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -227,8 +227,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/3.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/4.jpg"
+                                            <img src="{% static "images/product-image/3.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/4.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -271,8 +271,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/5.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/6.jpg"
+                                            <img src="{% static "images/product-image/5.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/6.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -312,8 +312,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/7.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/8.jpg"
+                                            <img src="{% static "images/product-image/7.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/8.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -353,8 +353,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/2.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/10.jpg"
+                                            <img src="{% static "images/product-image/2.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/10.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -395,8 +395,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/4.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/12.jpg"
+                                            <img src="{% static "images/product-image/4.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/12.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -436,8 +436,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/6.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/14.jpg"
+                                            <img src="{% static "images/product-image/6.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/14.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -475,8 +475,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/8.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/16.jpg"
+                                            <img src="{% static "images/product-image/8.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/16.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -522,8 +522,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/1.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/2.jpg"
+                                            <img src="{% static "images/product-image/1.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/2.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -563,8 +563,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/3.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/4.jpg"
+                                            <img src="{% static "images/product-image/3.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/4.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -607,8 +607,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/5.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/6.jpg"
+                                            <img src="{% static "images/product-image/5.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/6.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -648,8 +648,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/7.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/8.jpg"
+                                            <img src="{% static "images/product-image/7.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/8.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -689,8 +689,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/2.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/10.jpg"
+                                            <img src="{% static "images/product-image/2.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/10.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -731,8 +731,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/4.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/12.jpg"
+                                            <img src="{% static "images/product-image/4.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/12.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -772,8 +772,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/6.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/14.jpg"
+                                            <img src="{% static "images/product-image/6.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/14.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -811,8 +811,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/8.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/16.jpg"
+                                            <img src="{% static "images/product-image/8.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/16.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -858,8 +858,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/1.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/2.jpg"
+                                            <img src="{% static "images/product-image/1.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/2.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -899,8 +899,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/3.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/4.jpg"
+                                            <img src="{% static "images/product-image/3.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/4.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -943,8 +943,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/5.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/6.jpg"
+                                            <img src="{% static "images/product-image/5.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/6.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -984,8 +984,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/7.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/8.jpg"
+                                            <img src="{% static "images/product-image/7.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/8.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -1025,8 +1025,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/2.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/10.jpg"
+                                            <img src="{% static "images/product-image/2.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/10.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -1067,8 +1067,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/4.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/12.jpg"
+                                            <img src="{% static "images/product-image/4.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/12.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -1108,8 +1108,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/6.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/14.jpg"
+                                            <img src="{% static "images/product-image/6.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/14.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -1147,8 +1147,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/8.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/16.jpg"
+                                            <img src="{% static "images/product-image/8.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/16.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -1194,8 +1194,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/1.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/2.jpg"
+                                            <img src="{% static "images/product-image/1.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/2.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -1235,8 +1235,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/3.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/4.jpg"
+                                            <img src="{% static "images/product-image/3.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/4.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -1279,8 +1279,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/5.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/6.jpg"
+                                            <img src="{% static "images/product-image/5.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/6.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -1320,8 +1320,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/7.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/8.jpg"
+                                            <img src="{% static "images/product-image/7.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/8.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -1361,8 +1361,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/2.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/10.jpg"
+                                            <img src="{% static "images/product-image/2.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/10.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -1403,8 +1403,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/4.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/12.jpg"
+                                            <img src="{% static "images/product-image/4.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/12.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -1444,8 +1444,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/6.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/14.jpg"
+                                            <img src="{% static "images/product-image/6.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/14.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -1483,8 +1483,8 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/8.jpg" alt="Product" />
-                                            <img class="hover-image" src="assets/images/product-image/16.jpg"
+                                            <img src="{% static "images/product-image/8.jpg" alt="Product" />
+                                            <img class="hover-image" src="{% static "images/product-image/16.jpg"
                                                 alt="Product" />
                                         </a>
                                         <span class="badges">
@@ -1545,7 +1545,7 @@
                             Now <i class="fa fa-shopping-basket ml-15px" aria-hidden="true"></i></a>
                     </div>
                     <div class="deal-image">
-                        <img class="img-fluid" src="assets/images/deal-img/woman.png" alt="">
+                        <img class="img-fluid" src="{% static "images/deal-img/woman.png" %}" alt="">
                     </div>
                 </div>
             </div>
@@ -1584,7 +1584,7 @@
                         </div>
                         <div class="testi-author">
                             <div class="author-img">
-                                <img src="assets/images/testimonial-image/1.png" alt="">
+                                <img src="{% static "images/testimonial-image/1.png" %}" alt="">
                             </div>
                             <div class="author-name">
                                 <h4 class="name">Daisy Morgan</h4>
@@ -1610,7 +1610,7 @@
                         </div>
                         <div class="testi-author">
                             <div class="author-img">
-                                <img src="assets/images/testimonial-image/2.png" alt="">
+                                <img src="{% static "images/testimonial-image/2.png" %}" alt="">
                             </div>
                             <div class="author-name">
                                 <h4 class="name">Leah Chatman</h4>
@@ -1636,7 +1636,7 @@
                         </div>
                         <div class="testi-author">
                             <div class="author-img">
-                                <img src="assets/images/testimonial-image/3.png" alt="">
+                                <img src="{% static "images/testimonial-image/3.png" %}" alt="">
                             </div>
                             <div class="author-name">
                                 <h4 class="name">Reyna Chung</h4>
@@ -1662,7 +1662,7 @@
                         </div>
                         <div class="testi-author">
                             <div class="author-img">
-                                <img src="assets/images/testimonial-image/1.png" alt="">
+                                <img src="{% static "images/testimonial-image/1.png" %}" alt="">
                             </div>
                             <div class="author-name">
                                 <h4 class="name">Daisy Morgan</h4>
@@ -1688,7 +1688,7 @@
                         </div>
                         <div class="testi-author">
                             <div class="author-img">
-                                <img src="assets/images/testimonial-image/2.png" alt="">
+                                <img src="{% static "images/testimonial-image/2.png" %}" alt="">
                             </div>
                             <div class="author-name">
                                 <h4 class="name">Reyna Chung</h4>
@@ -1711,19 +1711,19 @@
         <div class="brand-slider swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide brand-slider-item text-center">
-                    <a href="#"><img class=" img-fluid" src="assets/images/brand-logo/1.png" alt="" /></a>
+                    <a href="#"><img class=" img-fluid" src="{% static "images/brand-logo/1.png" %}" alt="" /></a>
                 </div>
                 <div class="swiper-slide brand-slider-item text-center">
-                    <a href="#"><img class=" img-fluid" src="assets/images/brand-logo/2.png" alt="" /></a>
+                    <a href="#"><img class=" img-fluid" src="{% static "images/brand-logo/2.png" %}" alt="" /></a>
                 </div>
                 <div class="swiper-slide brand-slider-item text-center">
-                    <a href="#"><img class=" img-fluid" src="assets/images/brand-logo/3.png" alt="" /></a>
+                    <a href="#"><img class=" img-fluid" src="{% static "images/brand-logo/3.png" %}" alt="" /></a>
                 </div>
                 <div class="swiper-slide brand-slider-item text-center">
-                    <a href="#"><img class=" img-fluid" src="assets/images/brand-logo/4.png" alt="" /></a>
+                    <a href="#"><img class=" img-fluid" src="{% static "images/brand-logo/4.png" %}" alt="" /></a>
                 </div>
                 <div class="swiper-slide brand-slider-item text-center">
-                    <a href="#"><img class=" img-fluid" src="assets/images/brand-logo/5.png" alt="" /></a>
+                    <a href="#"><img class=" img-fluid" src="{% static "images/brand-logo/5.png" %}" alt="" /></a>
                 </div>
             </div>
         </div>
@@ -1744,19 +1744,19 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <img class="img-responsive m-auto"
-                                        src="assets/images/product-image/zoom-image/1.jpg" alt="">
+                                        src="{% static "images/product-image/zoom-image/1.jpg" alt="">
                                 </div>
                                 <div class="swiper-slide">
                                     <img class="img-responsive m-auto"
-                                        src="assets/images/product-image/zoom-image/2.jpg" alt="">
+                                        src="{% static "images/product-image/zoom-image/2.jpg" alt="">
                                 </div>
                                 <div class="swiper-slide">
                                     <img class="img-responsive m-auto"
-                                        src="assets/images/product-image/zoom-image/3.jpg" alt="">
+                                        src="{% static "images/product-image/zoom-image/3.jpg" alt="">
                                 </div>
                                 <div class="swiper-slide">
                                     <img class="img-responsive m-auto"
-                                        src="assets/images/product-image/zoom-image/4.jpg" alt="">
+                                        src="{% static "images/product-image/zoom-image/4.jpg" alt="">
                                 </div>
                             </div>
                         </div>
@@ -1764,19 +1764,19 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <img class="img-responsive m-auto"
-                                        src="assets/images/product-image/small-image/1.jpg" alt="">
+                                        src="{% static "images/product-image/small-image/1.jpg" alt="">
                                 </div>
                                 <div class="swiper-slide">
                                     <img class="img-responsive m-auto"
-                                        src="assets/images/product-image/small-image/2.jpg" alt="">
+                                        src="{% static "images/product-image/small-image/2.jpg" alt="">
                                 </div>
                                 <div class="swiper-slide">
                                     <img class="img-responsive m-auto"
-                                        src="assets/images/product-image/small-image/3.jpg" alt="">
+                                        src="{% static "images/product-image/small-image/3.jpg" alt="">
                                 </div>
                                 <div class="swiper-slide">
                                     <img class="img-responsive m-auto"
-                                        src="assets/images/product-image/small-image/4.jpg" alt="">
+                                        src="{% static "images/product-image/small-image/4.jpg" alt="">
                                 </div>
                             </div>
                         </div>
