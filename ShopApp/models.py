@@ -107,7 +107,7 @@ class OrderItem(models.Model):
 
 # Слайдер
 class Slaider(models.Model):
-    background = models.ImageField(upload_to='media/slaidbar/%Y/%m/%d', blank=False)
+    background = models.ImageField(upload_to='media/slaidbar/%Y/%m/%d', blank=True)
     title = models.CharField(max_length=20)
     sub_title = models.CharField(max_length=40)
     button_title = models.CharField(max_length=15)
