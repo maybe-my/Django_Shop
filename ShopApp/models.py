@@ -113,6 +113,7 @@ class Slaider(models.Model):
     button_title = models.CharField(max_length=15)
     button_url =  models.URLField()
     active = models.BooleanField(default=True)
+    tovar = models.ForeignKey(Tovar, on_delete=models.CASCADE)
 
     # Date
     created = models.DateTimeField(auto_now_add=True)

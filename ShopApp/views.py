@@ -7,13 +7,13 @@ import requests
 
 # Create your views here.
 def index(request):
-    tovar_top = Tovar.objects.filter(available=True, top=True)
+    tovar_top_one = Tovar.objects.filter(available=True, top=True).order_by('-created')[:1]
+    tovar_top = Tovar.objects.filter(available=True, top=True).order_by('-created')[:8]
     tovars_all = Tovar.objects.filter(available=True).order_by('-created')[:8]
     tovars_new = Tovar.objects.filter(available=True, new=True).order_by('-created')[:8]
     tovars_women = Tovar.objects.filter(available=True, family='w').order_by('-created')[:8]
     tovars_man = Tovar.objects.filter(available=True, family='m').order_by('-created')[:8]
     tovars_kids = Tovar.objects.filter(available=True, family='k').order_by('-created')[:8]
-    print(tovars_women)
     categorys = Category.objects.all().order_by('id')[:5]
     slaidbar = Slaider.objects.filter(active=True).order_by('-created')[:3]
     return render(request,
@@ -27,6 +27,7 @@ def index(request):
                     'tovars_women': tovars_women,
                     'tovars_man': tovars_man,
                     'tovars_kids': tovars_kids,
+                    'tovar_top_one': tovar_top_one,
                     })
 
 
@@ -48,7 +49,7 @@ def tovar_show(request, slug):
     tovar = get_object_or_404(Tovar,
                                 slug=slug,
                                 available=True)
-    top_tovars = Tovar.objects.filter(top=True, available=True).order_by('created')[:6]
+    top_tovars = Tovar.objects.filter(top=True, available=True).order_by('created')[:8]
     return render(request, 'ShopApp/detail_product.html', {'tovar': tovar,
                                                             'top_tovars': top_tovars})
 

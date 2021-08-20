@@ -1,268 +1,369 @@
 {% extends 'include/base.html' %}
 {% load static %}
-{% block title %} {{ tovar.category }} - {{ tovar.name }}{% endblock title %}
+{% block title %} {{ tovar.name }} - {{ tovar.category }}{% endblock title %}
 {% block content %}
 
-<!-- <<<<<<<<<<<<<<<<<<<< Breadcumb Area Start <<<<<<<<<<<<<<<<<<<< -->
-<div class="breadcumb_area">
+<!-- Product Details Area Start -->
+<div class="product-details-area pt-100px pb-100px">
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <ol class="breadcrumb d-flex align-items-center">
-                    <li class="breadcrumb-item"><a href="{% url 'tovars' %}">Каталог</a></li>
-                    <li class="breadcrumb-item"><a href="{% url 'tovars_category' tovar.category.slug %}">{{ tovar.category }}</a></li>
-                    <li class="breadcrumb-item active">{{ tovar.name }}</li>
-                </ol>
-                <!-- btn -->
-                <a href="{% url 'tovars' %}" class="backToHome d-block"><i class="fa fa-angle-double-left"></i> Назад</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- <<<<<<<<<<<<<<<<<<<< Breadcumb Area End <<<<<<<<<<<<<<<<<<<< -->
-
-<!-- <<<<<<<<<<<<<<<<<<<< Single Product Details Area Start >>>>>>>>>>>>>>>>>>>>>>>>> -->
-<section class="single_product_details_area section_padding_0_100">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-12 col-md-6">
-                <div class="single_product_thumb">
-                    <div id="product_details_slider" class="carousel slide" data-ride="carousel">
-
-                        <ol class="carousel-indicators">
-                            <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url({% if tovar.image_main.url != ' ' %}{{ tovar.image_main.url }}{% endif %});">
-                            </li>
-                            <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url({% if tovar.image1.url != ' ' %}{{ tovar.image1.url }}{% endif %});">
-                            </li>
-                            <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url({% if tovar.image2.url != ' ' %}{{ tovar.image2.url }}{% endif %});">
-                            </li>
-                            <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url({% if tovar.image3.url != ' ' %}{{ tovar.image3.url }}{% endif %});">
-                            </li>
-                        </ol>
-
-                        <div class="carousel-inner">
-
-                            <div class="carousel-item active">
-                                <a class="gallery_img" href="{{ tovar.image_main.url }}">
-                                    <img class="d-block w-100" src="{{ tovar.image_main.url }}" alt="First slide">
-                                </a>
-                            </div>
-                            {% if tovar.image1.url != ' ' %}
-                            <div class="carousel-item">
-                                <a class="gallery_img" href="{{ tovar.image1.url }}">
-                                    <img class="d-block w-100" src="{{ tovar.image1.url }}" alt="Second slide">
-                                </a>
-                            </div>
-                            {% endif %}
-                            {% if tovar.image2.url != ' ' %}
-                            <div class="carousel-item">
-                                <a class="gallery_img" href="{{ tovar.image2.url }}">
-                                    <img class="d-block w-100" src="{{ tovar.image2.url }}" alt="Third slide">
-                                </a>
-                            </div>
-                            {% endif %}
-                            {% if tovar.image3.url != ' ' %}
-                            <div class="carousel-item">
-                                <a class="gallery_img" href="{{ tovar.image3.url }}">
-                                    <img class="d-block w-100" src="{{ tovar.image3.url }}" alt="Fourth slide">
-                                </a>
-                            </div>
-                            {% endif %}
+            <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                <!-- Swiper -->
+                <div class="swiper-container zoom-top">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide zoom-image-hover">
+                            <img class="img-responsive m-auto" src="{{ tovar.image_main.url }}"
+                                alt="">
+                        </div>
+                        <div class="swiper-slide zoom-image-hover">
+                            <img class="img-responsive m-auto" src="{% if tovar.image1.url != ' ' %}{{ tovar.image1.url }}{% endif %}"
+                                alt="">
+                        </div>
+                        <div class="swiper-slide zoom-image-hover">
+                            <img class="img-responsive m-auto" src="{% if tovar.image2.url != ' ' %}{{ tovar.image2.url }}{% endif %}"
+                                alt="">
+                        </div>
+                        <div class="swiper-slide zoom-image-hover">
+                            <img class="img-responsive m-auto" src="{% if tovar.image3.url != ' ' %}{{ tovar.image3.url }}{% endif %}"
+                                alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-container zoom-thumbs mt-3 mb-3">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img class="img-responsive m-auto" src="{{ tovar.image_main.url }}"
+                                alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="img-responsive m-auto" src="{% if tovar.image1.url != ' ' %}{{ tovar.image1.url }}{% endif %}"
+                                alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="img-responsive m-auto" src="{% if tovar.image2.url != ' ' %}{{ tovar.image1.url }}{% endif %}"
+                                alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="img-responsive m-auto" src="{% if tovar.image3.url != ' ' %}{{ tovar.image1.url }}{% endif %}"
+                                alt="">
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-12 col-md-6">
-                <div class="single_product_desc">
-
-                    <h4 class="title"><a href="#">{{ tovar.name }}</a></h4>
-
-                    <h4 class="price">{{ tovar.price }} грн</h4>
-
-                    <p class="available">В <span class="text-muted">наличие</span></p>
-
-                    <div class="single_product_ratings mb-15">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star-o" aria-hidden="true"></i>
+            <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                <div class="product-details-content quickview-content">
+                    <h2>{{ tovar.name }}</h2>
+                    <div class="pricing-meta">
+                        <ul>
+                            <li class="old-price not-cut">{{ tovar.price }} грн</li>
+                        </ul>
                     </div>
-
-                    <div class="widget size mb-50">
-                        <h6 class="widget-title">Размеры:</h6>
-                        <div class="widget-desc">
+                    <div class="pro-details-rating-wrap">
+                        <div class="rating-product">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <span class="read-review"><a class="reviews" href="#">( 5 Customer Review )</a></span>
+                    </div>
+                    <div class="pro-details-color-info d-flex align-items-center">
+                        <span>Цвет</span>
+                        <div class="pro-details-color">
                             <ul>
-                                {% if tovar.S %} <li><a href="#">S</a></li>{% endif %}
-                                {% if tovar.M %} <li><a href="#">M</a></li>{% endif %}
-                                {% if tovar.L %} <li><a href="#">L</a></li>{% endif %}
-                                {% if tovar.XL %} <li><a href="#">XL</a></li>{% endif %}
-                                {% if tovar.XXL %} <li><a href="#">XXL</a></li>{% endif %}
-                                {% if tovar.XXXL %} <li><a href="#">XXXL</a></li>{% endif %}   
+                                <li><a class="active-color yellow" href="#"></a></li>
+                                <li><a class="black" href="#"></a></li>
+                                <li><a class="red" href="#"></a></li>
+                                <li><a class="pink" href="#"></a></li>
                             </ul>
                         </div>
                     </div>
-
-                    <!-- Add to Cart Form -->
-                    <a href="{% url 'checkout' tovar.slug %}" class="btn cart-submit ">Купить</button>
-
-                    <div id="accordion" role="tablist">
-                        <div class="card">
-                            <div class="card-header" role="tab" id="headingOne">
-                                <h6 class="mb-0">
-                                    <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">ОПИСАНИЕ</a>
-                                </h6>
-                            </div>
-
-                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                                <div class="card-body">
-                                    <p>{{ tovar.description | safe }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" role="tab" id="headingTwo">
-                                <h6 class="mb-0">
-                                    <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">РАЗМЕРЫ</a>
-                                </h6>
-                            </div>
-                            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-                                <div class="card-body">
-                                    <p><i style="color: yellow" class='ti-ruler'></i> ЗАМЕРЫ УКАЗАНЫ В САНТИМЕТРАХ <i style="color: yellow" class='ti-ruler'></i></p>
-                                    <p>{{ tovar.sizes | safe }}</p>
-                                    <p><i style="color: red" class='ti-alert'></i> Уважаемые покупатели, пожалуйста, внимательно ознакомьтесь с таблицей размеров перед покупкой <i style="color: red" class='ti-alert'></i></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" role="tab" id="headingThree">
-                                <h6 class="mb-0">
-                                    <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">ДОСТАВКА &amp; ВОЗВРАТ</a>
-                                </h6>
-                            </div>
-                            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                                <div class="card-body">
-                                    <p>- Самый быстрый и надежный способ доставки товаров с помощью услуг транспортной компании Новая Почта по всей Украине, доставка в любой уголок страны.</p>
-                                    <p>- Если товары надлежащего качества, но не подошел размер, вы имеете право обменять его в течение 14 дней со дня покупки.</p>
-                                    <p>- Если товар оказался ненадлежащего качества, вы имеете право вернуть его в течение гарантийного срока – 14 дней со дня покупки.</p>  
-                                </div>
-                            </div>
+                    <!-- Sidebar single item -->
+                    <div class="pro-details-size-info d-flex align-items-center">
+                        <span>Размер</span>
+                        <div class="pro-details-size">
+                            <ul>
+                                {% if tovar.S %} <li><a class="active-size gray gray" href="#">S</a></li>{% endif %}
+                                {% if tovar.M %} <li><a class="gray" href="#">M</a></li>{% endif %}
+                                {% if tovar.L %} <li><a class="gray" href="#">L</a></li>{% endif %}
+                                {% if tovar.XL %} <li><a class="gray" href="#">XL</a></li>{% endif %}
+                                {% if tovar.XXL %} <li><a class="gray" href="#">XXL</a></li>{% endif %}
+                                {% if tovar.XXXL %} <li><a class="gray" href="#">XXXL</a></li>{% endif %}
+                            </ul>
                         </div>
                     </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- <<<<<<<<<<<<<<<<<<<< Single Product Details Area End >>>>>>>>>>>>>>>>>>>>>>>>> -->
-
-<!-- ****** Quick View Modal Area Start ****** -->
-<div class="modal fade" id="quickview" tabindex="-1" role="dialog" aria-labelledby="quickview" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-            <div class="modal-body">
-                <div class="quickview_body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-5">
-                                <div class="quickview_pro_img">
-                                    <img src="img/product-img/product-1.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-7">
-                                <div class="quickview_pro_des">
-                                    <h4 class="title">Boutique Silk Dress</h4>
-                                    <div class="top_seller_product_rating mb-15">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <h5 class="price">$120.99 <span>$130</span></h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita quibusdam aspernatur, sapiente consectetur accusantium perspiciatis praesentium eligendi, in fugiat?</p>
-                                    <a href="#">View Full Product Details</a>
-                                </div>
-                                <!-- Add to Cart Form -->
-                                <form class="cart" method="post">
-                                    <div class="quantity">
-                                        <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-
-                                        <input type="number" class="qty-text" id="qty2" step="1" min="1" max="12" name="quantity" value="1">
-
-                                        <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                    </div>
-                                    <button type="submit" name="addtocart" value="5" class="cart-submit">Add to cart</button>
-                                    <!-- Wishlist -->
-                                    <div class="modal_pro_wishlist">
-                                        <a href="wishlist.html" target="_blank"><i class="ti-heart"></i></a>
-                                    </div>
-                                    <!-- Compare -->
-                                    <div class="modal_pro_compare">
-                                        <a href="compare.html" target="_blank"><i class="ti-stats-up"></i></a>
-                                    </div>
-                                </form>
-
-                                <div class="share_wf mt-30">
-                                    <p>Share With Friend</p>
-                                    <div class="_icon">
-                                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                        <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                        <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                            </div>
+                    <p class="m-0">{{ tovar.description | safe }} </p>
+                    <div class="pro-details-quality">
+                        <div class="cart-plus-minus">
+                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
                         </div>
+                        <div class="pro-details-cart">
+                            
+                            <a href="{% url 'checkout' tovar.slug %}" class="add-cart">Купить</a>
+                        </div>
+                        <div class="pro-details-compare-wishlist pro-details-wishlist ">
+                            <a href="wishlist.html"><i class="pe-7s-like"></i></a>
+                        </div>
+                        <div class="pro-details-compare-wishlist pro-details-compare">
+                            <a href="compare.html"><i class="pe-7s-refresh-2"></i></a>
+                        </div>
+                    </div>
+                    <div class="pro-details-sku-info pro-details-same-style  d-flex">
+                        <span>КОД: </span>
+                        <ul class="d-flex">
+                            <li>
+                                <a href="#">код</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pro-details-categories-info pro-details-same-style d-flex">
+                        <span>Категория: </span>
+                        <ul class="d-flex">
+                            <li>
+                                <a href="{% url 'tovars_category' tovar.category.slug %}">{{ tovar.category }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pro-details-social-info pro-details-same-style d-flex">
+                        <span>Поделиться: </span>
+                        <ul class="d-flex">
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- ****** Quick View Modal Area End ****** -->
 
-<section class="you_may_like_area clearfix">
+
+<!-- Related product Area Start -->
+<div class="related-product-area pb-100px">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="section_heading text-center">
-                    <h2>ТОП ПРОДАЖ</h2>
+                <div class="section-title text-center mb-30px0px line-height-1">
+                    <h2 class="title m-0">ТОП товары</h2>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="you_make_like_slider owl-carousel">
-
-                    <!-- Single gallery Item -->
-                    {% for tovar in top_tovars %}
-                        <div class="single_gallery_item">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <a href="{% url 'tovar_show' tovar.slug %}">
-                                <img src="{{ tovar.image_main.url }}" alt="">
-                                <a>
-                            </div>  
-                            <!-- Product Description -->
-                            <div class="product-description">
-                                <h4 class="product-price">{{ tovar.price }}</h4>
-                                <p>{{ tovar.name }}</p>
-                                <!-- Add to Cart -->
-                                <a href="{% url 'tovar_show' tovar.slug %}" class="add-to-cart-btn">Купить</a>
+        <div class="new-product-slider swiper-container slider-nav-style-1 small-nav">
+            <div class="new-product-wrapper swiper-wrapper">
+                {% for tovars in top_tovars %}
+                
+                {% if tovars.name != tovar.name %}
+                    <div class="new-product-item swiper-slide">
+                        <!-- Single Prodect -->
+                        <div class="product">
+                            <div class="thumb">
+                                <a href="{% url 'tovar_show' tovars.slug %}" class="image">
+                                    <img src="{{ tovars.image_main.url }}" alt="Product" />
+                                    <img class="hover-image" src="{% if tovars.image1 %}
+                                    {{ tovars.image1.url }}
+                                    {% else %}
+                                    {{ tovars.image_main.url }}
+                                    {% endif %}"
+                                        alt="Product" />
+                                </a>
+                                <span class="badges">
+                                    {% if tovars.new %}
+                                    <span class="new">Новинка</span>
+                                    {% endif %}
+                                    
+                                </span>
+                                <div class="actions">
+                                    <a href="wishlist.html" class="action wishlist" title="Wishlist"><i
+                                            class="pe-7s-like"></i></a>
+                                    <a href="#" class="action quickview" data-link-action="quickview"
+                                        title="Quick view" data-bs-toggle="modal"
+                                        data-bs-target="#{{tovars.name}}"><i class="pe-7s-search"></i></a>
+                                    <a href="compare.html" class="action compare" title="Compare"><i
+                                            class="pe-7s-refresh-2"></i></a>
+                                </div>
+                                <a href="{% url 'checkout' tovars.slug %}" class=" add-to-cart">Купить</a>
+                            </div>
+                            <div class="content">
+                                <span class="ratings">
+                                    <span class="rating-wrap">
+                                        <span class="star" style="width: 100%"></span>
+                                    </span>
+                                    <span class="rating-num">( 5 Review )</span>
+                                </span>
+                                <h5 class="title"><a href="{% url 'tovar_show' tovars.slug %}">{{tovars.name}}
+                                    </a>
+                                </h5>
+                                <span class="price">
+                                    <span class="new">{{tovars.price}} грн</span>
+                                </span>
                             </div>
                         </div>
-                    {% endfor %}
+                    </div>
+                {% endif %}
+                {% endfor %}
+                <!-- Add Arrows -->
+                <div class="swiper-buttons">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+<!-- Related product Area End -->
 
+ 
+<!-- Modals -->
+{% for tovar in top_tovars %}
+    
+ <div class="modal modal-2 fade" id="{{tovar.name}}" tabindex="-1" role="dialog">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-body">
+                 <div class="row">
+             <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                 <!-- Swiper -->
+                 <div class="swiper-container zoom-top">
+                     <div class="swiper-wrapper">
+                         <div class="swiper-slide zoom-image-hover">
+                             <img class="img-responsive m-auto" src="{{ tovar.image_main.url }}"
+                                 alt="">
+                         </div>
+                         <div class="swiper-slide zoom-image-hover">
+                             <img class="img-responsive m-auto" src="{% if tovar.image1.url != ' ' %}{{ tovar.image1.url }}{% endif %}"
+                                 alt="">
+                         </div>
+                         <div class="swiper-slide zoom-image-hover">
+                             <img class="img-responsive m-auto" src="{% if tovar.image2.url != ' ' %}{{ tovar.image2.url }}{% endif %}"
+                                 alt="">
+                         </div>
+                         <div class="swiper-slide zoom-image-hover">
+                             <img class="img-responsive m-auto" src="{% if tovar.image3.url != ' ' %}{{ tovar.image3.url }}{% endif %}"
+                                 alt="">
+                         </div>
+                     </div>
+                 </div>
+                 <div class="swiper-container zoom-thumbs mt-3 mb-3">
+                     <div class="swiper-wrapper">
+                         <div class="swiper-slide">
+                             <img class="img-responsive m-auto" src="{{ tovar.image_main.url }}"
+                                 alt="">
+                         </div>
+                         <div class="swiper-slide">
+                             <img class="img-responsive m-auto" src="{% if tovar.image1.url != ' ' %}{{ tovar.image1.url }}{% endif %}"
+                                 alt="">
+                         </div>
+                         <div class="swiper-slide">
+                             <img class="img-responsive m-auto" src="{% if tovar.image2.url != ' ' %}{{ tovar.image1.url }}{% endif %}"
+                                 alt="">
+                         </div>
+                         <div class="swiper-slide">
+                             <img class="img-responsive m-auto" src="{% if tovar.image3.url != ' ' %}{{ tovar.image1.url }}{% endif %}"
+                                 alt="">
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                 <div class="product-details-content quickview-content">
+                     <h2>{{ tovar.name }}</h2>
+                     <div class="pricing-meta">
+                         <ul>
+                             <li class="old-price not-cut">{{ tovar.price }} грн</li>
+                         </ul>
+                     </div>
+                     <div class="pro-details-rating-wrap">
+                         <div class="rating-product">
+                             <i class="fa fa-star"></i>
+                             <i class="fa fa-star"></i>
+                             <i class="fa fa-star"></i>
+                             <i class="fa fa-star"></i>
+                             <i class="fa fa-star"></i>
+                         </div>
+                         <span class="read-review"><a class="reviews" href="#">( 5 Customer Review )</a></span>
+                     </div>
+                     <div class="pro-details-color-info d-flex align-items-center">
+                         <span>Цвет</span>
+                         <div class="pro-details-color">
+                             <ul>
+                                 <li><a class="active-color yellow" href="#"></a></li>
+                                 <li><a class="black" href="#"></a></li>
+                                 <li><a class="red" href="#"></a></li>
+                                 <li><a class="pink" href="#"></a></li>
+                             </ul>
+                         </div>
+                     </div>
+                     <!-- Sidebar single item -->
+                     <div class="pro-details-size-info d-flex align-items-center">
+                         <span>Размер</span>
+                         <div class="pro-details-size">
+                             <ul>
+                                 {% if tovar.S %} <li><a class="active-size gray" href="#">S</a></li>{% endif %}
+                                 {% if tovar.M %} <li><a class="gray" href="#">M</a></li>{% endif %}
+                                 {% if tovar.L %} <li><a class="gray" href="#">L</a></li>{% endif %}
+                                 {% if tovar.XL %} <li><a class="gray" href="#">XL</a></li>{% endif %}
+                                 {% if tovar.XXL %} <li><a class="gray" href="#">XXL</a></li>{% endif %}
+                                 {% if tovar.XXXL %} <li><a class="gray" href="#">XXXL</a></li>{% endif %}
+                             </ul>
+                         </div>
+                     </div>
+                     <p class="m-0">{{ tovar.description | safe }} </p>
+                     <div class="pro-details-quality">
+                         <div class="cart-plus-minus">
+                             <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                         </div>
+                         <div class="pro-details-cart">
+                             
+                             <a href="{% url 'checkout' tovar.slug %}" class="add-cart">Купить</a>
+                         </div>
+                         <div class="pro-details-compare-wishlist pro-details-wishlist ">
+                             <a href="wishlist.html"><i class="pe-7s-like"></i></a>
+                         </div>
+                         <div class="pro-details-compare-wishlist pro-details-compare">
+                             <a href="compare.html"><i class="pe-7s-refresh-2"></i></a>
+                         </div>
+                     </div>
+                     <div class="pro-details-sku-info pro-details-same-style  d-flex">
+                         <span>КОД: </span>
+                         <ul class="d-flex">
+                             <li>
+                                 <a href="#">код</a>
+                             </li>
+                         </ul>
+                     </div>
+                     <div class="pro-details-categories-info pro-details-same-style d-flex">
+                         <span>Категория: </span>
+                         <ul class="d-flex">
+                             <li>
+                                 <a href="{% url 'tovars_category' tovar.category.slug %}">{{ tovar.category }}</a>
+                             </li>
+                         </ul>
+                     </div>
+                     <div class="pro-details-social-info pro-details-same-style d-flex">
+                         <span>Поделиться: </span>
+                         <ul class="d-flex">
+                             <li>
+                                 <a href="#"><i class="fa fa-facebook"></i></a>
+                             </li>
+                             <li>
+                                 <a href="#"><i class="fa fa-instagram"></i></a>
+                             </li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+         </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ 
+{% endfor %}
+<!-- End Modals -->
+ 
 {% endblock content %}
