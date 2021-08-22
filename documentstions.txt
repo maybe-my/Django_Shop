@@ -14,3 +14,7 @@ name='shop_index')                      # Shop главная
     name='tovars'),                     # Все товары
     name='tovars_category')             # Показ товаров по категории
     name='express')                     # Доставка и оплата
+
+
+
+TODO: 1. Хедер

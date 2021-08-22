@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Order, OrderItem, Category, Tovar, Slaider
+from .models import Order, OrderItem, Category, Tovar, Slaider, Contact
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -9,9 +9,9 @@ admin.site.register(Category, CategoryAdmin)
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug', 'price', 'stock', 'available', 'created', 'updated']
+    list_display = ['name', 'price', 'sale', 'available', 'created']
     list_filter = ['available', 'created', 'updated']
-    list_editable = ['price', 'stock', 'available']
+    list_editable = ['price', 'sale', 'available']
     prepopulated_fields = {'slug': ('name',)}
 admin.site.register(Tovar, ProductAdmin)
 
@@ -34,5 +34,12 @@ class SlaidbarAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'button_title', 'button_url']
     list_editable = ['title', 'button_title', 'button_url']
     list_filter = ['id', 'created', 'updated']
-
 admin.site.register(Slaider, SlaidbarAdmin)
+
+
+class ContactAdmin(admin.ModelAdmin):
+    model = Contact
+    list_display = ['id', 'name']
+    list_filter = ['id', 'created', 'updated']
+
+admin.site.register(Contact, ContactAdmin)

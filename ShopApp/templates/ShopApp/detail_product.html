@@ -55,7 +55,7 @@
                     <h2>{{ tovar.name }}</h2>
                     <div class="pricing-meta">
                         <ul>
-                            <li class="old-price not-cut">{{ tovar.price }} грн</li>
+                            <li class="old-price not-cut">{{ tovar.get_sale }} грн</li>
                         </ul>
                     </div>
                     <div class="pro-details-rating-wrap">
@@ -114,14 +114,16 @@
                             </div>
                         {% endif %}
                     </div>
-                    <div class="pro-details-sku-info pro-details-same-style  d-flex">
-                        <span>КОД: </span>
-                        <ul class="d-flex">
-                            <li>
-                                <a href="#">код</a>
-                            </li>
-                        </ul>
-                    </div>
+                    {% if tovar.kod != '' %}
+                        <div class="pro-details-sku-info pro-details-same-style  d-flex">
+                            <span>КОД: </span>
+                            <ul class="d-flex">
+                                <li>
+                                    <a href="#">{{ tovar.kod }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    {% endif %}
                     <div class="pro-details-categories-info pro-details-same-style d-flex">
                         <span>Категория: </span>
                         <ul class="d-flex">

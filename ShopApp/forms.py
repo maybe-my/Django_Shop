@@ -1,5 +1,5 @@
 from django import forms
-from .models import Order
+from .models import Order, Contact
 
 
 class OrderCreateForm(forms.ModelForm):
@@ -23,3 +23,14 @@ class OrderCreateForm(forms.ModelForm):
         super(OrderCreateForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
+
+
+class ContactCreateForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['name', 'email', 'message']
+        labels = {
+           'name': ('Имя'),
+           'email': ('Почта'),
+           'message': ('Коментарий к заказу')
+       }

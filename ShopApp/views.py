@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse, request
 from .models import Category, Tovar, OrderItem, Slaider
 from django.shortcuts import get_object_or_404
-from .forms import OrderCreateForm
+from .forms import OrderCreateForm, ContactCreateForm
 import requests
 
 # Create your views here.
@@ -51,6 +51,7 @@ def tovars_category(request, slug):
                                                         'top_tovars': top_tovars, 
                                                         'tovars_all': tovars_all,})
 
+
 def tovar_show(request, slug):
     tovar = get_object_or_404(Tovar,
                                 slug=slug,
@@ -66,11 +67,11 @@ def checkout(request, slug):
         form = OrderCreateForm(request.POST)
         if form.is_valid():
             order = form.save()
-            OrderItem.objects.create(order=order, product=tovar,price=tovar.price)
+            OrderItem.objects.create(order=order, product=tovar,price=tovar.get_sale())
 
             message = \
             f""" НОВЫЙ ЗАКАЗ №{order.id}!
-        КЛИЕНТ: {order.first_name} {order.last_name}, из {order.city} ({order.address}) заказал(а) - {tovar.name} на сумму - {tovar.price} грн!
+        КЛИЕНТ: {order.first_name} {order.last_name}, из {order.city} ({order.address}) заказал(а) - {tovar.name} на сумму - {tovar.get_sale()} грн!
         КОНТАКТЫ: Email: {order.email}. Телефон: {order.phone}.
         Оплатил: {order.paid}. 
         Коментарий к заказу: {order.comment}.
@@ -88,6 +89,15 @@ def express(request):
     return render(request, 'ShopApp/express.html')
 
 
+def contact(request):
+    if request.method == 'POST':
+        form = ContactCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = ContactCreateForm
+    return render(request, 'ShopApp/contact.html', {'form': form})
 
 
 # Functions

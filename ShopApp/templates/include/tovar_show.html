@@ -39,7 +39,12 @@
             <h5 class="title"><a href="{% url 'tovar_show' tovar.slug %}"> {{ tovar.name }} </a>
             </h5>
             <span class="price">
-                <span class="new">{{ tovar.price }}₴</span>
+                {% if tovar.sale > 0 %}
+                    <span class="new">{{ tovar.get_sale }} грн</span>
+                    <span class="old">{{ tovar.price }} грн</span>
+                {% else %}
+                    <span class="new">{{ tovar.price }} грн</span>
+                {% endif %}
             </span>
         </div>
     </div>
