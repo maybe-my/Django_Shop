@@ -31,19 +31,25 @@ def index(request):
                     })
 
 
-def tovars(request):
-    tovars = Tovar.objects.filter(available=True).order_by('-created')
+def tovars(request, size=''):
+    tovars = get_size(size)
+    tovars_all = tovars
     categorys = Category.objects.all()
     top_tovars = Tovar.objects.filter(top=True, available=True).order_by('created')[:3]
-    return render(request, 'ShopApp/shop.html', {'tovars': tovars, 'categorys': categorys, 'top_tovars': top_tovars})
+    return render(request, 'ShopApp/shop_filter.html', {'tovars': tovars, 'categorys': categorys, 'top_tovars': top_tovars, 'tovars_all': tovars_all})
 
 
 def tovars_category(request, slug):
+    tovars= Tovar.objects.filter(category__slug=slug).filter(available=True)
     categorys = Category.objects.all()
-    tovars = Tovar.objects.filter(category__slug=slug).filter(available=True)
+    tovars_all = Tovar.objects.filter(available=True).order_by('-created')
     top_tovars = Tovar.objects.filter(top=True).filter(available=True).order_by('created')[:3]
-    return render(request, 'ShopApp/shop.html', {'tovars': tovars, 'categorys': categorys, 'top_tovars': top_tovars})
-
+    # Filter Size
+    M = Tovar.objects.filter(available=True, M=True).order_by('-created')
+    return render(request, 'ShopApp/shop_filter.html', {'tovars': tovars, 
+                                                        'categorys': categorys, 
+                                                        'top_tovars': top_tovars, 
+                                                        'tovars_all': tovars_all,})
 
 def tovar_show(request, slug):
     tovar = get_object_or_404(Tovar,
@@ -80,3 +86,25 @@ def checkout(request, slug):
 
 def express(request):
     return render(request, 'ShopApp/express.html')
+
+
+
+
+# Functions
+
+def get_size(size):
+    if size == 'S':
+        tovars = Tovar.objects.filter(available=True, S=True).order_by('-created')
+    elif size == 'M':
+        tovars = Tovar.objects.filter(available=True, M=True).order_by('-created')
+    elif size == 'L':
+        tovars = Tovar.objects.filter(available=True, L=True).order_by('-created')
+    elif size == 'XL':
+        tovars = Tovar.objects.filter(available=True, XL=True).order_by('-created')
+    elif size == 'XXL':
+        tovars = Tovar.objects.filter(available=True, XXL=True).order_by('-created')
+    elif size == 'XXXL':
+        tovars = Tovar.objects.filter(available=True, XXXL=True).order_by('-created')
+    else:
+        tovars = Tovar.objects.filter(available=True).order_by('-created')
+    return tovars

@@ -55,7 +55,7 @@
                                 <li class="old-price not-cut">{{modal.price}} грн</li>
                             </ul>
                         </div>
-                        <div class="pro-details-rating-wrap">
+                        {% comment 'рейтинг' %} <div class="pro-details-rating-wrap">
                             <div class="rating-product">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -65,7 +65,7 @@
                             </div>
                             <span class="read-review"><a class="reviews" href="#">( 5 Customer Review
                                     )</a></span>
-                        </div>
+                        </div> {% endcomment %}
                         {% if modal.one_size == False %}
                             <div class="pro-details-size-info">
                                 <span>Размер:</span>
@@ -108,7 +108,7 @@
                             <span>Категория: </span>
                             <ul class="d-flex">
                                 <li>
-                                    <a href="#">{{ modal.category }}.</a>
+                                    <a href="{% url 'tovars_category' modal.category.slug %}">{{ modal.category }}.</a>
                                 </li>
                             </ul>
                         </div>

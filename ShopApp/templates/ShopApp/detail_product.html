@@ -99,7 +99,6 @@
                             <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
                         </div>
                         <div class="pro-details-cart">
-                            
                             <a href="{% url 'checkout' tovar.slug %}" class="add-cart">Купить</a>
                         </div>
                         <div class="pro-details-compare-wishlist pro-details-wishlist ">
@@ -108,6 +107,12 @@
                         <div class="pro-details-compare-wishlist pro-details-compare">
                             <a href="compare.html"><i class="pe-7s-refresh-2"></i></a>
                         </div>
+
+                        {% if request.user.is_superuser %}
+                            <div class="pro-details-compare-wishlist pro-details-compare">
+                                <a href="http://127.0.0.1:8000/admin/ShopApp/tovar/{{ tovar.id }}/change/"><i class="pe-7s-tools"></i></a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="pro-details-sku-info pro-details-same-style  d-flex">
                         <span>КОД: </span>
@@ -220,13 +225,10 @@
  
 <!-- Modals -->
 {% for modal in top_tovars %}
-<!-- Modal -->
 <div class="modal modal-2 fade" id="{{ modal.name }}" tabindex="-1" role="dialog">
     {% include 'include/tovar_modal.html' %}
 </div>
-<!-- Modal end -->
 {% endfor %}
-
 <!-- End Modals -->
 
  

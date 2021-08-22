@@ -53,13 +53,9 @@
                     <div class="col align-self-center d-none d-lg-block">
                         <div class="main-menu">
                             <ul>
-                                <li class="dropdown"><a href="{% url 'index' %}">Главная <i class="pe-7s-angle-down"></i></a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index.html">Home 1</a></li>
-                                        <li><a href="index-2.html">Home 2</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown position-static"><a href="#">Каталог <i
+                                <li><a href="{% url 'index' %}">Главная</a></li>
+                                
+                                <li class="dropdown position-static"><a href="{% url 'tovars' %}">Каталог <i
                                             class="pe-7s-angle-down"></i></a>
                                     <ul class="mega-menu d-block">
                                         <li class="d-flex">
@@ -156,8 +152,17 @@
                     <!-- Header Action Start -->
                     <div class="col col-lg-auto align-self-center pl-0">
                         <div class="header-actions">
-                            <a href="login.html" class="header-action-btn login-btn" data-bs-toggle="modal"
-                                data-bs-target="#loginActive">Войти</a>
+                            {% if request.user.is_authenticated %}
+                                {% if request.user.is_superuser %}
+                                    <a href="{% url 'admin:index' %}" class="header-action-btn login-btn">{{ request.user.first_name | upper }}</a>
+                                {% else %}
+                                    <a href="" class="header-action-btn login-btn">{{ request.user.first_name | upper }}</a>
+                                {% endif %}
+                                
+                            {% else %}
+                                <a href="login.html" class="header-action-btn login-btn" data-bs-toggle="modal"
+                                    data-bs-target="#loginActive">Войти</a>
+                            {% endif %}
                             <!-- Single Wedge Start -->
                             <a href="#" class="header-action-btn" data-bs-toggle="modal" data-bs-target="#searchActive">
                                 <i class="pe-7s-search"></i>

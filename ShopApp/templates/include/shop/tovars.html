@@ -1,33 +1,34 @@
-<!-- tovar - обьект  -->
-<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
+<div class="col-md-4 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
     data-aos-delay="200">
     <!-- Single Prodect -->
     <div class="product">
         <div class="thumb">
             <a href="{% url 'tovar_show' tovar.slug %}" class="image">
-                <img style="weight: 270px; height: 310px;" src="{{ tovar.image_main.url }}" alt="Product" />
-                <img class="hover-image" src="{% if tovar.image1.url != ' ' %} {{tovar.image1.url}} {% else %} {{ tovar.image_main.url }} {% endif %}"
+                <img src="{{ tovar.image_main.url }}"
                     alt="Product" />
+                <img class="hover-image"
+                    src="{% if tovar.image1.url != ' ' %} {{tovar.image1.url}} {% else %} {{ tovar.image_main.url }} {% endif %}" alt="Product" />
             </a>
             <span class="badges">
                 {% if tovar.new %}
                     <span class="new">Новинка</span>
                 {% endif %}
+                </a>
             </span>
             <div class="actions">
-            
-                <a href="wishlist.html" class="action wishlist" title="Wishlist"><i class="pe-7s-like"></i></a> 
-                <a href="compare.html" class="action compare" title="Compare"><i class="pe-7s-refresh-2"></i></a>
+                <a href="wishlist.html" class="action wishlist"
+                    title="Хочу"><i class="pe-7s-like"></i></a>
                 <a href="#" class="action quickview" data-link-action="quickview"
                     title="Посмотреть" data-bs-toggle="modal"
                     data-bs-target="#{{ tovar.name }}"><i class="pe-7s-search"></i></a>
+                <a href="compare.html" class="action compare"
+                    title="Сравнить"><i class="pe-7s-refresh-2"></i></a>
                 {% if request.user.is_superuser %}
                     <a href="http://127.0.0.1:8000/admin/ShopApp/tovar/{{ tovar.id }}/change/" class="action compare"
                     title="Редактировать"><i class="pe-7s-tools"></i></a>
                 {% endif %}
             </div>
-            
-            <a href="{% url 'tovar_show' tovar.slug %}" class="add-to-cart">Купить</a>
+            <a href="{% url 'checkout' tovar.slug %}" class="add-to-cart">Купить</a>
         </div>
         <div class="content">
             <span class="ratings">
@@ -36,11 +37,20 @@
                 </span>
                 <span class="rating-num">( 5 Review )</span>
             </span>
-            <h5 class="title"><a href="{% url 'tovar_show' tovar.slug %}"> {{ tovar.name }} </a>
+            <h5 class="title"><a href="{% url 'tovar_show' tovar.slug %}">{{ tovar.name }}</a>
             </h5>
             <span class="price">
-                <span class="new">{{ tovar.price }}₴</span>
+                <span class="new">{{ tovar.price }} грн</span>
             </span>
         </div>
     </div>
 </div>
+
+
+<!-- Modals -->
+{% for modal in tovars %}
+<div class="modal modal-2 fade" id="{{ modal.name }}" tabindex="-1" role="dialog">
+    {% include 'include/tovar_modal.html' %}
+</div>
+{% endfor %}
+<!-- End Modals -->

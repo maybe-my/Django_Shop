@@ -1,0 +1,174 @@
+{% extends 'include/base.html' %}
+{% load static %}
+{% block title %}Интернет магазин одежы{% endblock title %}
+{% block content %}
+
+ <!-- Shop Page Start  -->
+ <div class="shop-category-area pt-100px pb-100px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 order-lg-last col-md-12 order-md-first">
+                <!-- Shop Top Area Start -->
+                <div class="shop-top-bar d-flex">
+                    <!-- Left Side start -->
+                    <p><span>{{ tovars | length }}</span> показано из <span>{{ tovars_all | length}}</span></p>
+                    <!-- Left Side End -->
+                    <div class="shop-tab nav">
+                        <a class="active" href="#shop-grid" data-bs-toggle="tab">
+                            <i class="fa fa-th" aria-hidden="true"></i>
+                        </a>
+                        <a href="#shop-list" data-bs-toggle="tab">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <!-- Right Side Start -->
+                    <div class="select-shoing-wrap d-flex align-items-center">
+                        <div class="shot-product">
+                            <p>Сортировать:</p>
+                        </div>
+                        <div class="shop-select">
+                            <select class="shop-sort">
+                                <option data-display="Relevance">Relevance</option>
+                                <option value="1"> Name, A to Z</option>
+                                <option value="2"> Name, Z to A</option>
+                                <option value="3"> Price, low to high</option>
+                                <option value="4"> Price, high to low</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <!-- Right Side End -->
+                </div>
+                <!-- Shop Top Area End -->
+
+                <!-- Shop Bottom Area Start -->
+                <div class="shop-bottom-area">
+
+                    <!-- Tab Content Area Start -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="shop-grid">
+                                    <div class="row mb-n-30px">
+                                        {% for tovar in tovars %}
+                                            {% include "include/shop/tovars.html" %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="shop-list">
+                                    {% for tovar in tovars %}
+                                        {% include "include/shop/tovars_detail.html" %}
+                                    {% endfor %}           
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab Content Area End -->
+
+                    <!--  Pagination Area Start -->
+                    <div class="load-more-items text-center mb-md-60px mb-lm-60px mt-30px0px" data-aos="fade-up">
+                        <a href="#" class="btn btn-lg btn-primary btn-hover-dark m-auto"> Еще <i
+                                class="fa fa-refresh ml-15px" aria-hidden="true"></i></a>
+                    </div>
+                    <!--  Pagination Area End -->
+                </div>
+                <!-- Shop Bottom Area End -->
+            </div>
+            <!-- Sidebar Area Start -->
+            <div class="col-lg-3 order-lg-first col-md-12 order-md-last mb-md-60px mb-lm-60px">
+                <div class="shop-sidebar-wrap">
+                    <!-- Sidebar single item -->
+                    <div class="sidebar-widget-search">
+                        <form id="widgets-searchbox" action="#">
+                            <input class="input-field" type="text" placeholder="Найти">
+                            <button class="widgets-searchbox-btn" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <!-- Sidebar single item -->
+                    <!-- <div class="sidebar-widget mt-8">
+                        <h4 class="sidebar-title">Цена</h4>
+                        <div class="price-filter">
+                            <div class="price-slider-amount">
+                                <input type="text" id="amount" class="p-0 h-auto lh-1" name="price"
+                                    placeholder="ваша цена" />
+                            </div>
+                            <div id="slider-range"></div>
+                        </div>
+                    </div> -->
+                    <!-- Sidebar single item -->
+                    <div class="sidebar-widget">
+                        <h4 class="sidebar-title">Категории</h4>
+                        <div class="sidebar-widget-category">
+                            <ul>
+                                <li><a href="{% url 'tovars' %}" class="selected m-0">Все</a></li>
+                                {% for category in categorys %}
+                                    <li><a href="{% url 'tovars_category' category.slug %}" class="">{{category.name}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Sidebar single item -->
+                    <div class="sidebar-widget">
+                        <h4 class="sidebar-title">Цвет</h4>
+                        <div class="sidebar-widget-list color">
+                            <ul>
+                                <li><a class="active yellow" href="#"></a></li>
+                                <li><a class="black" href="#"></a></li>
+                                <li><a class="red" href="#"></a></li>
+                                <li><a class="pink" href="#"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Sidebar single item -->
+                    <div class="sidebar-widget">
+                        <h4 class="sidebar-title">Размер</h4>
+                        <div class="sidebar-widget-list size">
+                            <ul>
+                                <li><a class="{% if request.path == '/tovars/S' %}active-2{% endif %} gray" href="{% url 'tovars' %}S">S</a></li>
+                                <li><a class="{% if request.path == '/tovars/M' %}active-2{% endif %} gray" href="{% url 'tovars' %}M">M</a></li>
+                                <li><a class="{% if request.path == '/tovars/L' %}active-2{% endif %} gray" href="{% url 'tovars' %}L">L</a></li>
+                            </ul>
+                            <br>
+                            <ul>
+                                <li><a class="{% if request.path == '/tovars/XL' %}active-2{% endif %} gray" href="{% url 'tovars' %}XL">XL</a></li>
+                                <li><a class="{% if request.path == '/tovars/XXL' %}active-2{% endif %} gray" href="{% url 'tovars' %}XXL">XXL</a></li>
+                                <li><a class="{% if request.path == '/tovars/XXXL' %}active-2{% endif %} gray" href="{% url 'tovars' %}XXXL">XXXL</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Sidebar single item -->
+                    <!-- <div class="sidebar-widget tag">
+                        <h4 class="sidebar-title">#Теги</h4>
+                        <div class="sidebar-widget-tag">
+                            <ul>
+                                <li><a href="#">Fashion</a></li>
+                                <li><a href="#">Organic</a></li>
+                                <li><a href="#">Old Fashion</a></li>
+                                <li><a href="#">Men</a></li>
+                                <li><a href="#">Fashion</a></li>
+                                <li><a href="#">Dress</a></li>
+                            </ul>
+                        </div>
+                    </div> -->
+                    <!-- Sidebar single item -->
+                    <div class="sidebar-widget-image">
+                        <div class="single-banner">
+                            <img src="assets/images/banner/2.jpg" alt="">
+                            <div class="item-disc">
+                                <h2 class="title">#bestsellers</h2>
+                                <a href="single-product-variable.html" class="shop-link">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sidebar single item -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Shop Page End  -->
+
+
+{% endblock content %}
