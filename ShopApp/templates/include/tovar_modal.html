@@ -10,19 +10,19 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <img class="img-responsive m-auto"
-                                    src="{% static "images/product-image/zoom-image/1.jpg" %}" alt="">
+                                    src="{% if modal.image_main.url != ' ' %} {{modal.image_main.url}} {% endif %}" alt="">
                             </div>
                             <div class="swiper-slide">
                                 <img class="img-responsive m-auto"
-                                    src="{% static "images/product-image/zoom-image/2.jpg" %}" alt="">
+                                    src="{% if modal.image1.url != ' ' %} {{modal.image1.url}} {% endif %}" alt="">
                             </div>
                             <div class="swiper-slide">
                                 <img class="img-responsive m-auto"
-                                    src="{% static "images/product-image/zoom-image/3.jpg" %}" alt="">
+                                    src="{% if modal.image2.url != ' ' %} {{modal.image2.url}} {% endif %}" alt="">
                             </div>
                             <div class="swiper-slide">
                                 <img class="img-responsive m-auto"
-                                    src="{% static "images/product-image/zoom-image/4.jpg" %}" alt="">
+                                    src="{% if modal.image3.url != ' ' %} {{modal.image3.url}} {% endif %}" alt="">
                             </div>
                         </div>
                     </div>
@@ -30,29 +30,29 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <img class="img-responsive m-auto"
-                                    src="{% static "images/product-image/small-image/1.jpg" %}" alt="">
+                                    src="{% if modal.image_main.url != ' ' %} {{modal.image_main.url}} {% endif %}" alt="">
                             </div>
                             <div class="swiper-slide">
                                 <img class="img-responsive m-auto"
-                                    src="{% static "images/product-image/small-image/2.jpg" %}" alt="">
+                                    src="{% if modal.image1.url != ' ' %} {{modal.image1.url}} {% endif %}" alt="">
                             </div>
                             <div class="swiper-slide">
                                 <img class="img-responsive m-auto"
-                                    src="{% static "images/product-image/small-image/3.jpg" %}" alt="">
+                                    src="{% if modal.image2.url != ' ' %} {{modal.image2.url}} {% endif %}" alt="">
                             </div>
                             <div class="swiper-slide">
                                 <img class="img-responsive m-auto"
-                                    src="{% static "images/product-image/small-image/4.jpg" %}" alt="">
+                                    src="{% if modal.image3.url != ' ' %} {{modal.image3.url}} {% endif %}" alt="">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
                     <div class="product-details-content quickview-content">
-                        <h2>Ardene Microfiber Tights</h2>
+                        <h2>{{modal.name}}</h2>
                         <div class="pricing-meta">
                             <ul>
-                                <li class="old-price not-cut">$18.90</li>
+                                <li class="old-price not-cut">{{modal.price}} грн</li>
                             </ul>
                         </div>
                         <div class="pro-details-rating-wrap">
@@ -66,18 +66,28 @@
                             <span class="read-review"><a class="reviews" href="#">( 5 Customer Review
                                     )</a></span>
                         </div>
-                        <p class="mt-30px mb-0">Lorem ipsum dolor sit amet, consect adipisicing elit, sed do
-                            eiusmod tempor incidi ut labore
-                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita ullamco
-                            laboris nisi
-                            ut aliquip ex ea commodo </p>
+                        {% if modal.one_size == False %}
+                            <div class="pro-details-size-info">
+                                <span>Размер:</span>
+                                <div class="pro-details-size">
+                                    <ul>
+                                        {% if modal.S %} <li><a class="active-size gray gray" href="#">S</a></li>{% endif %}
+                                        {% if modal.M %} <li><a class="gray" href="#">M</a></li>{% endif %}
+                                        {% if modal.L %} <li><a class="gray" href="#">L</a></li>{% endif %}
+                                        {% if modal.XL %} <li><a class="gray" href="#">XL</a></li>{% endif %}
+                                        {% if modal.XXL %} <li><a class="gray" href="#">XXL</a></li>{% endif %}
+                                        {% if modal.XXXL %} <li><a class="gray" href="#">XXXL</a></li>{% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <p class="mt-30px mb-0">{{ modal.description | safe }} </p>
                         <div class="pro-details-quality">
                             <div class="cart-plus-minus">
                                 <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
                             </div>
                             <div class="pro-details-cart">
-                                <button class="add-cart" href="#"> Add To
-                                    Cart</button>
+                                <a href="{% url 'checkout' modal.slug %}" class="add-cart">Купить</a>
                             </div>
                             <div class="pro-details-compare-wishlist pro-details-wishlist ">
                                 <a href="wishlist.html"><i class="pe-7s-like"></i></a>
@@ -87,7 +97,7 @@
                             </div>
                         </div>
                         <div class="pro-details-sku-info pro-details-same-style  d-flex">
-                            <span>SKU: </span>
+                            <span>КОД: </span>
                             <ul class="d-flex">
                                 <li>
                                     <a href="#">Ch-256xl</a>
@@ -95,30 +105,18 @@
                             </ul>
                         </div>
                         <div class="pro-details-categories-info pro-details-same-style d-flex">
-                            <span>Categories: </span>
+                            <span>Категория: </span>
                             <ul class="d-flex">
                                 <li>
-                                    <a href="#">Fashion.</a>
-                                </li>
-                                <li>
-                                    <a href="#">eCommerce</a>
+                                    <a href="#">{{ modal.category }}.</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="pro-details-social-info pro-details-same-style d-flex">
-                            <span>Share: </span>
+                            <span>Поделиться: </span>
                             <ul class="d-flex">
                                 <li>
                                     <a href="#"><i class="fa fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-google"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-youtube"></i></a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-instagram"></i></a>
