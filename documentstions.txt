@@ -3,7 +3,7 @@
     <span class="sale">скидка  </span>
     <span class="new">Разпродажа</span>
 </span>
-ffffff
+
 
 # Пути
 name='admin'),                          # Админка 
