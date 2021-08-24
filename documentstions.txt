@@ -4,7 +4,7 @@
     <span class="new">Разпродажа</span>
 </span>
 
-# Пути
+# Пути 
 name='admin'),                          # Админка 
 name='shop_index')                      # Shop главная
     name='index'                        # главная страница
