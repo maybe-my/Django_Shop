@@ -4,7 +4,6 @@
     <span class="new">Разпродажа</span>
 </span>
 
-fffff
 # Пути
 name='admin'),                          # Админка 
 name='shop_index')                      # Shop главная
@@ -16,5 +15,5 @@ name='shop_index')                      # Shop главная
     name='express')                     # Доставка и оплата
 
 
-sss
+
 TODO: 1. Хедер
