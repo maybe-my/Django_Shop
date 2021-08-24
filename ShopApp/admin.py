@@ -31,8 +31,7 @@ admin.site.register(Order, OrderAdmin)
 
 class SlaidbarAdmin(admin.ModelAdmin):
     model = Slaider
-    list_display = ['id', 'title', 'button_title', 'button_url']
-    list_editable = ['title', 'button_title', 'button_url']
+    list_display = ['title', 'sub_title','button_title', 'button_url']
     list_filter = ['id', 'created', 'updated']
 admin.site.register(Slaider, SlaidbarAdmin)
 

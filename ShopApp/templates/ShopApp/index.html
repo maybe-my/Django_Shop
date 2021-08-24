@@ -10,42 +10,42 @@
         <div class="swiper-wrapper">
             <!-- Start Single slider item -->
             {% for slaid in slaidbar %}
-                    
                 <div class="hero-slide-item slider-height swiper-slide d-flex bg-color2">
                     <div class="container align-self-center">
                         <div class="row">
                             <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 align-self-center sm-center-view">
                                 <div class="hero-slide-content slider-animated-1">
-                                    <span class="category">{{ slaid.sub_title }}</span>
+                                    <span class="category">{{ slaid.sub_title }}  {% if request.user.is_superuser %}
+                                      <a href="http://127.0.0.1:8000/admin/ShopApp/slaider/{{ slaid.id }}/change/"><i class="pe-7s-tools"></i></a>
+                                    {% endif %}</span>
                                     <h2 class="title-1">{{slaid.title}} </h2>
-                                    {% comment %} <h2 class="title-2"><span>50%</span> Off</h2> {% endcomment %}
                                     <a href="{{ slaid.button_url }}" class="btn btn-lg btn-primary btn-hover-dark"> {{slaid.button_title}} <i
                                             class="fa fa-shopping-basket ml-15px" aria-hidden="true"></i></a>
                                 </div>
                             </div>
-                            <div
-                                class="col-xl-7 col-lg-7 col-md-7 col-sm-7 d-flex justify-content-center position-relative">
-                                <div class="show-case">
-                                    <div class="hero-slide-image">
-                                        <img style="height: 634px; width: 472px;" src="{{ slaid.tovar.image_main.url }}" alt="" />
-                                        {% comment %} {{ slaid.tovar.image_main.url }} {% endcomment %}
-                                    </div>
-                                    <div class="display-wrapper">
-                                        <div class="content-side">
-                                            <h4 class="title">{{ slaid.tovar.name }} </h4>
-                                            <span class="price">{{ slaid.tovar.price }} грн</span>
-                                            <a href="{% url 'tovar_show' slaid.tovar.slug %}" class="shop-link">Купить сейчас</a>
+                            {% if slaid.active_tovar == True %}
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 d-flex justify-content-center position-relative">
+                                    <div class="show-case">
+                                        <div class="hero-slide-image">
+                                            <img style="height: 634px; width: 472px;" src="{{ slaid.tovar.image_main.url }}" alt="" />
+                                            {% comment %} {{ slaid.tovar.image_main.url }} {% endcomment %}
                                         </div>
-                                        <div class="image-side">
-                                            {% comment %} <img style="height: 97px; width: 89px;" src="{{ slaid.tovar.image_main.url }}" alt=""> {% endcomment %}
+                                        <div class="display-wrapper">
+                                            <div class="content-side">
+                                                <h4 class="title">{{ slaid.tovar.name }} </h4>
+                                                <span class="price">{{ slaid.tovar.price }} грн</span>
+                                                <a href="{% url 'tovar_show' slaid.tovar.slug %}" class="shop-link">Купить сейчас</a>
+                                            </div>
+                                            <div class="image-side">
+                                                {% comment %} <img style="height: 97px; width: 89px;" src="{{ slaid.tovar.image_main.url }}" alt=""> {% endcomment %}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
-               
             {% endfor %}
             <!-- End Single slider item -->
         </div>

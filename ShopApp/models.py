@@ -117,12 +117,19 @@ class Slaider(models.Model):
     button_title = models.CharField(max_length=15)
     button_url =  models.URLField()
     active = models.BooleanField(default=True)
-    tovar = models.ForeignKey(Tovar, on_delete=models.CASCADE)
+    active_tovar = models.BooleanField('Показывать товар',default=False) 
+    tovar = models.ForeignKey(Tovar, verbose_name='Товар', default='без товара', on_delete=models.CASCADE, null=True, blank=True)
 
     # Date
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Слайдер'
+        verbose_name_plural = 'Слайдеры'
 
 # Обратная связь
 class Contact(models.Model):
